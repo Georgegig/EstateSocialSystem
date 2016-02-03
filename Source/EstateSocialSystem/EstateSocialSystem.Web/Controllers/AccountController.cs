@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EstateSocialSystem.Web.Models;
+using EstateSocialSystem.Data.Models;
 
 namespace EstateSocialSystem.Web.Controllers
 {

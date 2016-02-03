@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using EstateSocialSystem.Web.Models;
+using EstateSocialSystem.Data.Models;
+using EstateSocialSystem.Data;
 
 namespace EstateSocialSystem.Web
 {
