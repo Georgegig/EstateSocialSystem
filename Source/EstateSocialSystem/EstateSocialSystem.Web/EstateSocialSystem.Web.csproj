@@ -256,6 +256,10 @@
     <Content Include="Scripts\jquery-2.2.0.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EstateSocialSystem.Data.Common\EstateSocialSystem.Data.Common.csproj">
+      <Project>{772c7a3b-7df4-4b1b-8216-16969589bec4}</Project>
+      <Name>EstateSocialSystem.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EstateSocialSystem.Data.Models\EstateSocialSystem.Data.Models.csproj">
       <Project>{e47e4213-6aaf-4363-abed-9ca04dab16a3}</Project>
       <Name>EstateSocialSystem.Data.Models</Name>
