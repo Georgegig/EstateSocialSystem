@@ -6,6 +6,7 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
@@ -19,6 +20,7 @@
 
         public DateTime? DeletedOn { get; set; }
 
+        [Index]
         public bool IsDeleted { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
