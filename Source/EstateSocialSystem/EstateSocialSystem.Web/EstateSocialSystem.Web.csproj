@@ -48,6 +48,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -288,6 +292,10 @@
     <ProjectReference Include="..\EstateSocialSystem.Data\EstateSocialSystem.Data.csproj">
       <Project>{1d63fb2d-4c16-4ea1-8bc2-9185a0a6fc96}</Project>
       <Name>EstateSocialSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EstateSocialSystem.Web.Infrastructure\EstateSocialSystem.Web.Infrastructure.csproj">
+      <Project>{8b380c85-7ced-4c57-90d3-4437911d95bd}</Project>
+      <Name>EstateSocialSystem.Web.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
