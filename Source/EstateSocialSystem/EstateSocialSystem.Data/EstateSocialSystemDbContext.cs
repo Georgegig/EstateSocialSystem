@@ -5,20 +5,18 @@
     using System.Linq;
     using Common.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Migrations;
     using Models;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class EstateSocialSystemDbContext : IdentityDbContext<User>, IEstateSocialSystemDbContext
     {
-        public ApplicationDbContext()
+        public EstateSocialSystemDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
-        public static ApplicationDbContext Create()
+        public static EstateSocialSystemDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new EstateSocialSystemDbContext();
         }
 
         public override int SaveChanges()

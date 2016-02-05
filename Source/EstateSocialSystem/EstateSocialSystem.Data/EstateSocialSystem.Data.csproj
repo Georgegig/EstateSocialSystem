@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstateSocialSystemDbContext.cs" />
+    <Compile Include="IEstateSocialSystemDbContext.cs" />
     <Compile Include="Migrations\201602031856493_InitialCreate.cs" />
     <Compile Include="Migrations\201602031856493_InitialCreate.Designer.cs">
       <DependentUpon>201602031856493_InitialCreate.cs</DependentUpon>
