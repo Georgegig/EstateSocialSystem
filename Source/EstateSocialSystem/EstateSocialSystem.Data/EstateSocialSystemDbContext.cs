@@ -1,12 +1,12 @@
 ﻿namespace EstateSocialSystem.Data
 {
-    using Models;
+    using System;
     using System.Data.Entity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Migrations;
     using System.Linq;
     using Common.Models;
-    using System;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Migrations;
+    using Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

@@ -5,17 +5,17 @@ namespace EstateSocialSystem.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EstateSocialSystem.Data.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-            // TODO: Remove in production
+            //// TODO: Remove in production
             this.AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "EstateSocialSystem.Data.ApplicationDbContext";
+            this.ContextKey = "EstateSocialSystem.Data.ApplicationDbContext";
         }
 
-        protected override void Seed(EstateSocialSystem.Data.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
         }
     }

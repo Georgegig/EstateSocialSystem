@@ -70,12 +70,12 @@ namespace EstateSocialSystem.Web.App_Start
                 .To(typeof(DeletableEntityRepository<>));
 
 
-            //kernel.Bind(b => b.From("NewsSystem.Data.Services")
-            //                   .SelectAllClasses()
-            //                 .BindDefaultInterface());
-            //kernel.Bind(typeof(IRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
+            ////kernel.Bind(b => b.From("NewsSystem.Data.Services")
+            ////                   .SelectAllClasses()
+            ////                 .BindDefaultInterface());
+            ////kernel.Bind(typeof(IRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
 
-            //kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
+            ////kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
         }        
     }
 }
