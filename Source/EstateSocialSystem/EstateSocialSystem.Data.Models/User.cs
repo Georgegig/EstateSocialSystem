@@ -7,15 +7,38 @@
     using Common.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
+        private ICollection<Estate> estates;
+        private ICollection<Appliance> appliances;
+
         public User()
         {
             // This will prevent UserManager.CreateAsync from causing exception
             this.CreatedOn = DateTime.Now;
+            this.estates = new HashSet<Estate>();
+            this.appliances = new HashSet<Appliance>();
         }
+
+        [Required]
+        [MaxLength(12)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        public  string LastName { get; set; }
+
+        public string Address { get; set; }
+
+        [DefaultValue(false)]
+        public bool IsManufacturer { get; set; }
+
+        public virtual Manufacturer Manufacturer { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
@@ -35,5 +58,9 @@
             //// Add custom user claims here
             return userIdentity;
         }
+
+        public virtual ICollection<Estate> Estates { get { return this.estates; } set { this.estates = value; } }
+
+        public virtual ICollection<Appliance> Appliances { get { return this.appliances; } set { this.appliances = value; } }
     }
 }

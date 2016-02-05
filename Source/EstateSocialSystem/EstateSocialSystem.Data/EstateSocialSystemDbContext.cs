@@ -14,6 +14,12 @@
         {
         }
 
+        public IDbSet<Estate> Estates { get; set; }
+
+        public IDbSet<Appliance> Appliances { get; set; }
+
+        public IDbSet<Manufacturer> Manufacturers { get; set; }
+
         public static EstateSocialSystemDbContext Create()
         {
             return new EstateSocialSystemDbContext();
@@ -65,6 +71,21 @@
                 entity.IsDeleted = true;
                 entry.State = EntityState.Modified;
             }
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //// Configure OwnerID as PK for Manufacturer
+            modelBuilder.Entity<Manufacturer>()
+                .HasKey(e => e.OwnerId);
+
+            //// Configure OwnerId as FK for Manufacturer
+            modelBuilder.Entity<User>()
+                        .HasOptional(u => u.Manufacturer) //// Mark Manufacturer is optional for Student
+                        .WithRequired(m => m.Owner) //// Create inverse relationship
+                        .WillCascadeOnDelete(true);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
