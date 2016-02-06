@@ -8,6 +8,13 @@
 
     public class Manufacturer : AuditInfo, IDeletableEntity
     {
+        private ICollection<Appliance> appliances;
+
+        public Manufacturer()
+        {
+            this.appliances = new HashSet<Appliance>();
+        }
+
         [Key, ForeignKey("Owner")]
         public string OwnerId { get; set; }
 
@@ -24,5 +31,7 @@
         public bool IsDeleted { get; set; }       
 
         public virtual User Owner { get; set; }
+
+        public virtual ICollection<Appliance> Appliances { get { return this.appliances; } set { this.appliances = value; } }
     }
 }
