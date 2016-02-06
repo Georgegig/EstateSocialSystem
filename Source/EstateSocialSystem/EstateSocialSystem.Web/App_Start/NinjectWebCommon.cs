@@ -13,6 +13,7 @@ namespace EstateSocialSystem.Web.App_Start
     using System.Data.Entity;
     using Data;
     using Data.Common.Repository;
+    using Data.Models;
 
     public static class NinjectWebCommon 
     {
@@ -64,8 +65,12 @@ namespace EstateSocialSystem.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind(typeof(IRepository<Estate>)).To(typeof(IDeletableEntityRepository<Estate>));
+
+
             kernel.Bind<DbContext>().To<EstateSocialSystemDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+
             kernel.Bind(typeof(IDeletableEntityRepository<>))
                 .To(typeof(DeletableEntityRepository<>));
 
