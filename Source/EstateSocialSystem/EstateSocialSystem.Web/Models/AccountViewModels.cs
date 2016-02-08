@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EstateSocialSystem.Web.Models
@@ -76,6 +77,9 @@ namespace EstateSocialSystem.Web.Models
         [Required]
         [Display(Name = "LastName")]
         public string LastName { get; set; }
+
+        [DefaultValue(false)]
+        public bool IsManufacturer { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

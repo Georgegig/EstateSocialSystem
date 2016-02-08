@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EstateSocialSystem.Web.Models;
 using EstateSocialSystem.Data.Models;
+using System.Web.Security;
 
 namespace EstateSocialSystem.Web.Controllers
 {
@@ -152,10 +154,16 @@ namespace EstateSocialSystem.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName, Email = model.Email };
+                var user = new User { UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, IsManufacturer = model.IsManufacturer };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (model.IsManufacturer)
+                    {
+                        UserManager.AddToRole(user.Id, "Manufacturer");
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

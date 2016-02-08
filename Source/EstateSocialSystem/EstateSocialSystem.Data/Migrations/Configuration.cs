@@ -1,5 +1,7 @@
 namespace EstateSocialSystem.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -17,6 +19,14 @@ namespace EstateSocialSystem.Data.Migrations
 
         protected override void Seed(EstateSocialSystemDbContext context)
         {
+            if (!context.Roles.Any(r => r.Name == "Manufacturer"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Manufacturer" };
+
+                manager.Create(role);
+            }
         }
     }
 }
