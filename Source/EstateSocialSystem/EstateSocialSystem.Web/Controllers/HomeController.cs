@@ -1,5 +1,6 @@
 ﻿using EstateSocialSystem.Data.Common.Repository;
 using EstateSocialSystem.Data.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace EstateSocialSystem.Web.Controllers
 
         public ActionResult Index()
         {
-            var model = this.estates.All();
+            var userId = User.Identity.GetUserId();
+            var model = this.estates.All().Where(m => m.AuthorId == userId);
 
             return this.View(model);
         }

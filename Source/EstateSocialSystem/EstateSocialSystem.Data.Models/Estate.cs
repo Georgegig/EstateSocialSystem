@@ -18,7 +18,6 @@
         public int Id { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
         [MaxLength(20)]
         public string Name { get; set; }
 

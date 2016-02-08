@@ -67,7 +67,6 @@ namespace EstateSocialSystem.Web.App_Start
         {
             kernel.Bind(typeof(IRepository<Estate>)).To(typeof(IDeletableEntityRepository<Estate>));
 
-
             kernel.Bind<DbContext>().To<EstateSocialSystemDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
 
