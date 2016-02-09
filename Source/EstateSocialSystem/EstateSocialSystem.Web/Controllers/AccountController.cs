@@ -171,6 +171,12 @@ namespace EstateSocialSystem.Web.Controllers
                         UserManager.AddToRole(user.Id, "Manufacturer");
                     }
 
+                    if (!(model.IsManufacturer))
+                    {
+                        UserManager.AddToRole(user.Id, "Regular");
+                    }
+
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     return RedirectToAction("Index", "Home");
                 }
