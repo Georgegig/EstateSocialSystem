@@ -22,27 +22,24 @@
                 </ul>
             </div>
         </li>
-        @if (User.IsInRole("Manufacturer"))
-        {
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="applianceDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-                            style="margin-top:8px;">
-                        Appliance
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
-                        <li>@Html.ActionLink("Create", "Create", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </div>
-            </li>
-        }
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="applianceDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                        style="margin-top:8px;">
+                    Appliance
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
+                    <li>@Html.ActionLink("Create", "Create", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "UserProfile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>

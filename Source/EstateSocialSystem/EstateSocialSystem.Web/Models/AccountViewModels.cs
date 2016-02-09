@@ -77,6 +77,9 @@ namespace EstateSocialSystem.Web.Models
         [Required]
         [Display(Name = "LastName")]
         public string LastName { get; set; }
+        
+        [Display(Name = "Profile Picture")]
+        public string Avatar { get; set; }
 
         [DefaultValue(false)]
         public bool IsManufacturer { get; set; }

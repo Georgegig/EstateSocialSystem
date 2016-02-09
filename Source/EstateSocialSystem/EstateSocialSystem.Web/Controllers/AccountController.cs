@@ -12,6 +12,7 @@ using Microsoft.Owin.Security;
 using EstateSocialSystem.Web.Models;
 using EstateSocialSystem.Data.Models;
 using System.Web.Security;
+using EstateSocialSystem.Data.Common.Repository;
 
 namespace EstateSocialSystem.Web.Controllers
 {
@@ -20,9 +21,12 @@ namespace EstateSocialSystem.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IDeletableEntityRepository<User> users;
+        private const string defaultAvatar = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png";
 
-        public AccountController()
+        public AccountController(IDeletableEntityRepository<User> users)
         {
+            this.users = users;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -162,6 +166,12 @@ namespace EstateSocialSystem.Web.Controllers
                     IsManufacturer = model.IsManufacturer
                 };
 
+                if (model.Avatar == null)
+                {
+                    user.Avatar = defaultAvatar;
+                }
+
+
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -175,7 +185,6 @@ namespace EstateSocialSystem.Web.Controllers
                     {
                         UserManager.AddToRole(user.Id, "Regular");
                     }
-
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     return RedirectToAction("Index", "Home");
@@ -416,6 +425,16 @@ namespace EstateSocialSystem.Web.Controllers
         public ActionResult ExternalLoginFailure()
         {
             return View();
+        }
+
+        // GET: /Account/UserProfile
+        [AllowAnonymous]
+        public ActionResult UserProfile()
+        {
+            var currentUserId = User.Identity.GetUserId();
+            var userModel = this.users.All().Where(u => u.Id == currentUserId).First();
+
+            return View(userModel);
         }
 
         protected override void Dispose(bool disposing)

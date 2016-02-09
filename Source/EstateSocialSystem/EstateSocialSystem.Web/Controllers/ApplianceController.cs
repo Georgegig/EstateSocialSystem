@@ -33,15 +33,20 @@ namespace EstateSocialSystem.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appliance = new Appliance {
+                var appliance = new Appliance
+                {
                     Name = model.Name,
                     Type = model.Type,
                     Power = model.Power,
                     Input = model.Input,
                     Output = model.Output,
-                    ManufacturerId = User.Identity.GetUserId(),
                     CreatedOn = DateTime.Now
                 };
+
+                if (User.IsInRole("Manufacturer"))
+                {
+                    appliance.ManufacturerId = User.Identity.GetUserId();
+                }
 
                 this.appliances.Add(appliance);
                 this.appliances.SaveChanges();

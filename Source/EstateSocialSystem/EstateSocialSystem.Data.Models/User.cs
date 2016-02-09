@@ -33,6 +33,8 @@
         [MaxLength(20)]
         public  string LastName { get; set; }
 
+        public string Avatar { get; set; }
+
         public string Address { get; set; }
 
         [DefaultValue(false)]
