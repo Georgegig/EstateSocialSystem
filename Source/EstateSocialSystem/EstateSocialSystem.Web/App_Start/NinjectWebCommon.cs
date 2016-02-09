@@ -66,6 +66,7 @@ namespace EstateSocialSystem.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IRepository<Estate>)).To(typeof(IDeletableEntityRepository<Estate>));
+            kernel.Bind(typeof(IRepository<Appliance>)).To(typeof(IDeletableEntityRepository<Appliance>));
 
             kernel.Bind<DbContext>().To<EstateSocialSystemDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));

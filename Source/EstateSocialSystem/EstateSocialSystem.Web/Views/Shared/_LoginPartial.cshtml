@@ -8,12 +8,12 @@
     <ul class="nav navbar-nav navbar-right">
         <li>
             <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                <button class="btn btn-default dropdown-toggle" type="button" id="estateDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                         style="margin-top:8px;">
                     Estate
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <ul class="dropdown-menu" aria-labelledby="estateDropDown">
                     <li>@Html.ActionLink("Create", "Create", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
@@ -22,6 +22,25 @@
                 </ul>
             </div>
         </li>
+        @if (User.IsInRole("Manufacturer"))
+        {
+            <li>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="applianceDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                            style="margin-top:8px;">
+                        Appliance
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
+                        <li>@Html.ActionLink("Create", "Create", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </li>
+        }
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>

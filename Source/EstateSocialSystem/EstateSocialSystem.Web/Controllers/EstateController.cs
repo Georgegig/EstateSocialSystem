@@ -35,7 +35,13 @@
         {            
             if (ModelState.IsValid)
             {
-                var estate = new Estate { Name = model.Name, Address = model.Address, Size = model.Size, AuthorId = User.Identity.GetUserId(), CreatedOn = DateTime.Now };
+                var estate = new Estate {
+                    Name = model.Name,
+                    Address = model.Address,
+                    Size = model.Size,
+                    AuthorId = User.Identity.GetUserId(),
+                    CreatedOn = DateTime.Now
+                };
 
                 this.estates.Add(estate);
                 this.estates.SaveChanges();

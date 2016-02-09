@@ -1,5 +1,4 @@
-﻿@model IEnumerable<EstateSocialSystem.Data.Models.Estate>
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
@@ -10,14 +9,23 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Estate test</h2>
         @if (User.Identity.IsAuthenticated)
         {
+            <h2>Estates</h2>
             <div>
-                @foreach (var estate in Model)
+                @foreach (var estate in ViewBag.Estates)
                 {
                     <div>
                         @estate.Name
+                    </div>
+                }
+            </div>
+            <h2>Appliances</h2>
+            <div>
+                @foreach (var appliance in ViewBag.Appliances)
+                {
+                    <div>
+                        @appliance.Name
                     </div>
                 }
             </div>

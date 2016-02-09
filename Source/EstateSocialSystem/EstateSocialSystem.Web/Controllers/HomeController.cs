@@ -12,18 +12,23 @@ namespace EstateSocialSystem.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IDeletableEntityRepository<Estate> estates;
+        private readonly IDeletableEntityRepository<Appliance> appliances;
 
-        public HomeController(IDeletableEntityRepository<Estate> estates)
+        public HomeController(IDeletableEntityRepository<Estate> estates, IDeletableEntityRepository<Appliance> appliances)
         {
             this.estates = estates;
+            this.appliances = appliances;
         }
 
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var model = this.estates.All().Where(m => m.AuthorId == userId);
+            var estates = this.estates.All().Where(e => e.AuthorId == userId);
+            ViewBag.Estates = estates;
+            var appliances = this.appliances.All().Where(a => a.ManufacturerId == userId);
+            ViewBag.Appliances = appliances;
 
-            return this.View(model);
+            return this.View(ViewBag);
         }
 
         public ActionResult About()
