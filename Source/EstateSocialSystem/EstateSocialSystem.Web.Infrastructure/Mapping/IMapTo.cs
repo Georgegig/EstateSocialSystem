@@ -1,6 +1,6 @@
 ﻿namespace EstateSocialSystem.Web.Infrastructure.Mapping
 {
-    public interface IMapFrom<T>
+    public interface IMapTo<T>
         where T : class
     {
     }

@@ -22,8 +22,8 @@
             ViewEnginesConfig.RegisterEngines();
             DbConfig.Initialize();
 
-            var autoMapperConfig = new AutoMapperConfig(Assembly.GetExecutingAssembly());
-            autoMapperConfig.Execute();
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }

@@ -204,8 +204,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplianceCreateViewModels.cs" />
-    <Compile Include="Models\EstateViewModels.cs" />
+    <Compile Include="Models\ApplianceCreateViewModel.cs" />
+    <Compile Include="Models\HomeIndexApplianceViewModel.cs" />
+    <Compile Include="Models\EstateCreateViewModel.cs" />
+    <Compile Include="Models\HomeIndexEstateViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

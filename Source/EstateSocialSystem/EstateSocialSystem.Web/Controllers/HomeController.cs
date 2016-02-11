@@ -2,6 +2,8 @@
 {
     using Data.Common.Repository;
     using Data.Models;
+    using Models;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using System.Linq;
     using System.Web.Mvc;
@@ -20,9 +22,9 @@
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var estates = this.estates.All().Where(e => e.AuthorId == userId);
+            var estates = this.estates.All().Where(e => e.AuthorId == userId).To<HomeIndexEstateViewModel>().ToList();
             ViewBag.Estates = estates;
-            var appliances = this.appliances.All();
+            var appliances = this.appliances.All().To<HomeIndexApplianceViewModel>().ToList();
             ViewBag.Appliances = appliances;
 
             return this.View(ViewBag);
