@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstateSocialSystem.Services.Data
 {
-    class EstateServices
+    interface IEstateService
     {
     }
 }
