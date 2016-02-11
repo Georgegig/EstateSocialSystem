@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateSocialSystem.Data.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateSocialSystem.Web.Infrastructure", "EstateSocialSystem.Web.Infrastructure\EstateSocialSystem.Web.Infrastructure.csproj", "{8B380C85-7CED-4C57-90D3-4437911D95BD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{866D5708-21E0-4D33-B947-A2F19ECFE23B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateSocialSystem.Services.Data", "EstateSocialSystem.Services.Data\EstateSocialSystem.Services.Data.csproj", "{2C067FFD-A242-46FE-BBAF-C55EC926970A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{8B380C85-7CED-4C57-90D3-4437911D95BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B380C85-7CED-4C57-90D3-4437911D95BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B380C85-7CED-4C57-90D3-4437911D95BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C067FFD-A242-46FE-BBAF-C55EC926970A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C067FFD-A242-46FE-BBAF-C55EC926970A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C067FFD-A242-46FE-BBAF-C55EC926970A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C067FFD-A242-46FE-BBAF-C55EC926970A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,5 +71,6 @@ Global
 		{EED91076-0EE7-4307-8C07-0E1EE10A9DA6} = {64649220-E4F9-4C2B-84F8-59B695BD8133}
 		{772C7A3B-7DF4-4B1B-8216-16969589BEC4} = {72D8AAA6-3B7E-46A7-8A26-FD304FBC530C}
 		{8B380C85-7CED-4C57-90D3-4437911D95BD} = {64649220-E4F9-4C2B-84F8-59B695BD8133}
+		{2C067FFD-A242-46FE-BBAF-C55EC926970A} = {866D5708-21E0-4D33-B947-A2F19ECFE23B}
 	EndGlobalSection
 EndGlobal
