@@ -58,9 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appliance.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="Estate.cs" />
     <Compile Include="Manufacturer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rating.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

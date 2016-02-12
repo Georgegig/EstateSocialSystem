@@ -16,7 +16,7 @@
                 @foreach (var estate in ViewBag.Estates)
                 {
                     <div>
-                        @estate.Name
+                        <a href="/estate/@estate.Id">@estate.Name</a>
                     </div>
                 }
             </div>

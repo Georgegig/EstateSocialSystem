@@ -51,5 +51,11 @@
 
             return this.View(model);
         }
+
+        // GET: Estate Display by ID
+        public ActionResult Display()
+        {
+            return View();
+        }
     }
 }

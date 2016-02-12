@@ -26,7 +26,7 @@
             ViewBag.Estates = estates;
             var appliances = this.appliances.All().To<HomeIndexApplianceViewModel>().ToList();
             ViewBag.Appliances = appliances;
-
+            
             return this.View(ViewBag);
         }
 

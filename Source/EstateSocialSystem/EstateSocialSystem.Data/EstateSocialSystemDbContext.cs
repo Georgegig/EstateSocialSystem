@@ -20,6 +20,11 @@
 
         public IDbSet<Manufacturer> Manufacturers { get; set; }
 
+        public IDbSet<Comment> Comments { get; set; }
+
+        public IDbSet<Rating> Ratings { get; set; }
+
+
         public static EstateSocialSystemDbContext Create()
         {
             return new EstateSocialSystemDbContext();

@@ -16,6 +16,8 @@
     {
         private ICollection<Estate> estates;
         private ICollection<Appliance> appliances;
+        private ICollection<Rating> ratings;
+        private ICollection<Comment> comments;
 
         public User()
         {
@@ -23,6 +25,8 @@
             this.CreatedOn = DateTime.Now;
             this.estates = new HashSet<Estate>();
             this.appliances = new HashSet<Appliance>();
+            this.ratings = new HashSet<Rating>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Required]
@@ -64,5 +68,9 @@
         public virtual ICollection<Estate> Estates { get { return this.estates; } set { this.estates = value; } }
 
         public virtual ICollection<Appliance> Appliances { get { return this.appliances; } set { this.appliances = value; } }
+
+        public virtual ICollection<Rating> Ratings { get { return this.ratings; } set { this.ratings = value; } }
+
+        public virtual ICollection<Comment> Comments { get { return this.comments; } set { this.comments = value; } }
     }
 }

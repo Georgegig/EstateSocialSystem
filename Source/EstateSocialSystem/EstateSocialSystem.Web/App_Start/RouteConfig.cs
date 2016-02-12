@@ -14,6 +14,11 @@ namespace EstateSocialSystem.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Display estate",
+                url: "estate/{id}/{url}",
+                defaults: new { controller = "Estate", action = "Display" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
