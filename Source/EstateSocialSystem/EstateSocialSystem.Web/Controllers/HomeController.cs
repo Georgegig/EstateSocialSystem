@@ -1,7 +1,5 @@
 ﻿namespace EstateSocialSystem.Web.Controllers
 {
-    using Data.Common.Repository;
-    using Data.Models;
     using Models;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
@@ -12,9 +10,9 @@
     public class HomeController : Controller
     {
         private readonly IEstateService estates;
-        private readonly IDeletableEntityRepository<Appliance> appliances;
+        private readonly IApplianceService appliances;
 
-        public HomeController(IEstateService estates, IDeletableEntityRepository<Appliance> appliances)
+        public HomeController(IEstateService estates, IApplianceService appliances)
         {
             this.estates = estates;
             this.appliances = appliances;
@@ -25,7 +23,7 @@
             var userId = User.Identity.GetUserId();
             var estates = this.estates.GetAll().Where(e => e.AuthorId == userId).To<HomeIndexEstateViewModel>().ToList();
             ViewBag.Estates = estates;
-            var appliances = this.appliances.All().To<HomeIndexApplianceViewModel>().ToList();
+            var appliances = this.appliances.GetAll().To<HomeIndexApplianceViewModel>().ToList();
             ViewBag.Appliances = appliances;
             
             return this.View(ViewBag);

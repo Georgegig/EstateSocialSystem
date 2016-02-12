@@ -5,7 +5,7 @@
 
     public interface IEstateService
     {
-        void CreateEstate(Estate model);
+        void AddEstate(Estate model);
 
         IQueryable<Estate> GetAll();
 

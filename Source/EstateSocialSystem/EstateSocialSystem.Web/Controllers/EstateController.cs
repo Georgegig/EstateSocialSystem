@@ -2,11 +2,11 @@
 {
     using System;
     using System.Web.Mvc;
-    using Models;
     using Data.Models;
+    using Infrastructure.Mapping;
+    using Models;
     using Microsoft.AspNet.Identity;
     using Services.Data;
-    using EstateSocialSystem.Web.Infrastructure.Mapping;
 
     public class EstateController : Controller
     {
@@ -40,7 +40,7 @@
                     CreatedOn = DateTime.Now
                 };
 
-                this.estates.CreateEstate(estate);
+                this.estates.AddEstate(estate);
 
                 return this.RedirectToAction("Index", "Home");
             }

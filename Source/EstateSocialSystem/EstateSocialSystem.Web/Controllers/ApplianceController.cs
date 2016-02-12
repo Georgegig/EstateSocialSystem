@@ -1,20 +1,17 @@
-﻿using EstateSocialSystem.Data.Common.Repository;
-using EstateSocialSystem.Data.Models;
-using EstateSocialSystem.Web.Models;
-using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace EstateSocialSystem.Web.Controllers
+﻿namespace EstateSocialSystem.Web.Controllers
 {
+    using Data.Models;
+    using Services.Data;
+    using Models;
+    using Microsoft.AspNet.Identity;
+    using System;
+    using System.Web.Mvc;
+
     public class ApplianceController : Controller
     {
-        private readonly IDeletableEntityRepository<Appliance> appliances;
+        private readonly IApplianceService appliances;
 
-        public ApplianceController(IDeletableEntityRepository<Appliance> appliances)
+        public ApplianceController(IApplianceService appliances)
         {
             this.appliances = appliances;
         }
@@ -48,8 +45,7 @@ namespace EstateSocialSystem.Web.Controllers
                     appliance.ManufacturerId = User.Identity.GetUserId();
                 }
 
-                this.appliances.Add(appliance);
-                this.appliances.SaveChanges();
+                this.appliances.AddAppliance(appliance);
 
                 return this.RedirectToAction("Index", "Home");
             }

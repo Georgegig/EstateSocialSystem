@@ -1,10 +1,6 @@
 ﻿namespace EstateSocialSystem.Services.Data
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using EstateSocialSystem.Data.Models;
     using EstateSocialSystem.Data.Common.Repository;
 
@@ -17,7 +13,7 @@
             this.estates = estates;
         }
 
-        public void CreateEstate(Estate estate)
+        public void AddEstate(Estate estate)
         {
             this.estates.Add(estate);
             this.estates.SaveChanges();
