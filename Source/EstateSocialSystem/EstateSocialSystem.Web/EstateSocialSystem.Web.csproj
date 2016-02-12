@@ -216,6 +216,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Estates\EstateDisplayViewModel.cs" />
     <Compile Include="ViewModels\Users\AccountViewModels.cs" />
     <Compile Include="ViewModels\Appliances\ApplianceCreateViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeIndexApplianceViewModel.cs" />
@@ -297,6 +298,7 @@
     <Content Include="Views\Estate\Create.cshtml" />
     <Content Include="Views\Appliance\Create.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Estate\Display.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -316,6 +318,10 @@
     <ProjectReference Include="..\EstateSocialSystem.Data\EstateSocialSystem.Data.csproj">
       <Project>{1d63fb2d-4c16-4ea1-8bc2-9185a0a6fc96}</Project>
       <Name>EstateSocialSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EstateSocialSystem.Services.Data\EstateSocialSystem.Services.Data.csproj">
+      <Project>{2c067ffd-a242-46fe-bbaf-c55ec926970a}</Project>
+      <Name>EstateSocialSystem.Services.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\EstateSocialSystem.Web.Infrastructure\EstateSocialSystem.Web.Infrastructure.csproj">
       <Project>{8b380c85-7ced-4c57-90d3-4437911d95bd}</Project>

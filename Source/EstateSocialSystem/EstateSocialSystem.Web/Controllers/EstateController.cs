@@ -1,21 +1,18 @@
 ﻿namespace EstateSocialSystem.Web.Controllers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Web;
     using System.Web.Mvc;
-    using EstateSocialSystem.Web.Models;
+    using Models;
     using Data.Models;
     using Microsoft.AspNet.Identity;
-    using Data.Common.Repository;
+    using Services.Data;
+    using EstateSocialSystem.Web.Infrastructure.Mapping;
 
     public class EstateController : Controller
     {
-        private readonly IDeletableEntityRepository<Estate> estates;
+        private readonly IEstateService estates;
 
-        public EstateController(IDeletableEntityRepository<Estate> estates)
+        public EstateController(IEstateService estates)
         {
             this.estates = estates;
         }
@@ -32,7 +29,7 @@
         [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EstateCreateViewModel model)
-        {            
+        {     
             if (ModelState.IsValid)
             {
                 var estate = new Estate {
@@ -43,8 +40,7 @@
                     CreatedOn = DateTime.Now
                 };
 
-                this.estates.Add(estate);
-                this.estates.SaveChanges();
+                this.estates.CreateEstate(estate);
 
                 return this.RedirectToAction("Index", "Home");
             }
@@ -53,9 +49,11 @@
         }
 
         // GET: Estate Display by ID
-        public ActionResult Display()
-        {
-            return View();
+        public ActionResult Display(int id)
+        {            
+            var estateById = this.estates.GetById(id);
+            var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<EstateDisplayViewModel>(estateById);
+            return View(viewModel);
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿namespace EstateSocialSystem.Web.Models
 {
+    using Data.Models;
+    using Infrastructure.Mapping;
     using System.ComponentModel.DataAnnotations;
 
-    public class EstateDisplayViewModel
+    public class EstateDisplayViewModel : IMapFrom<Estate>
     {
         [Required]
         [Display(Name = "Name")]
