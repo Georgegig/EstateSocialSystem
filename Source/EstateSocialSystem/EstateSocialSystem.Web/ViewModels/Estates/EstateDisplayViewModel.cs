@@ -6,7 +6,9 @@
 
     public class EstateDisplayViewModel : IMapFrom<Estate>
     {
-        [Required]
+        [Display(Name = "Id")]
+        public int Id { get; set; }
+
         [Display(Name = "Name")]
         public string Name { get; set; }
 

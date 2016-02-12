@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplianceService.cs" />
+    <Compile Include="CommentService.cs" />
     <Compile Include="EstateService.cs" />
     <Compile Include="IApplianceService.cs" />
+    <Compile Include="ICommentService.cs" />
     <Compile Include="IEstateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

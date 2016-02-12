@@ -52,8 +52,9 @@
         public ActionResult Display(int id)
         {            
             var estateById = this.estates.GetById(id);
-            var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<EstateDisplayViewModel>(estateById);
-            return View(viewModel);
+            var estateViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<EstateDisplayViewModel>(estateById);
+
+            return View(estateViewModel);
         }
     }
 }

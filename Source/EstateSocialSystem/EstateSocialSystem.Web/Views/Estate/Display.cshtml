@@ -1,9 +1,9 @@
-﻿@model EstateSocialSystem.Web.Models.EstateDisplayViewModel
-@{
+﻿@model  EstateSocialSystem.Web.Models.EstateDisplayViewModel
+@{ 
     ViewBag.Title = "Display";
 }
-
 <h2>Display</h2>
+<h2>EstateCharacteristics</h2>
 <div class="row">
     <div class="col-md-12 text-center">
         <h1>@Model.Name</h1>
@@ -15,3 +15,13 @@
         <h4>@Model.Size</h4>
     </div>
 </div>
+
+<form action="/Comment/Create/@Model.Id" method="post">
+    <label for="content">Content</label>
+    <textarea id="content" name="content"></textarea>
+    <input type="submit" value="Create"/>
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
