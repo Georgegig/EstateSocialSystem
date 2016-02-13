@@ -2,6 +2,7 @@
 {
     using Data.Models;
     using Infrastructure.Mapping;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class EstateDisplayViewModel : IMapFrom<Estate>
@@ -17,5 +18,7 @@
 
         [Display(Name = "Size")]
         public double Size { get; set; }
+                
+        public IEnumerable<Comment> Comments { get; set; }
     }
 }
