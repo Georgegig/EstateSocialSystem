@@ -4,8 +4,10 @@
 
     public class RatingController : Controller
     {
-        // GET: Rating
-        public ActionResult Index()
+        // Post: Add Rating
+        [HttpPost]
+        [Authorize]
+        public ActionResult Add()
         {
             return View();
         }
