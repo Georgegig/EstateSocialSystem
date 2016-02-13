@@ -20,19 +20,14 @@
         [Authorize]
         public ActionResult Create(string content, int id)
         {
-            if (ModelState.IsValid)
+            var comment = new Comment
             {
-                var comment = new Comment
-                {
-                    Content = content,
-                    AuthorId = User.Identity.GetUserId(),
-                    EstateId = id
-                };
+                Content = content,
+                AuthorId = User.Identity.GetUserId(),
+                EstateId = id
+            };
 
-                this.comments.AddComment(comment);
-
-                return this.RedirectToAction("Display", "Estate", new  { id = id });
-            }
+            this.comments.AddComment(comment);
 
             return this.RedirectToAction("Display", "Estate", new { id = id });
         }
