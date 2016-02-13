@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using Services.Data;
+    using System.Collections.Generic;
 
     public class HomeController : Controller
     {
@@ -20,9 +21,35 @@
 
         public ActionResult Index()
         {
+            var estatesByRating = new Dictionary<HomeIndexEstateViewModel, int>();
             var userId = User.Identity.GetUserId();
-            var estates = this.estates.GetAll().Where(e => e.AuthorId == userId).To<HomeIndexEstateViewModel>().ToList();
-            ViewBag.Estates = estates;
+            var estates = this.estates.GetAll().To<HomeIndexEstateViewModel>().ToList();
+
+            foreach (var estate in estates)
+            {
+                var ratingsSum = 0;
+                var count = 0;
+                var averageRating = 0;
+
+                foreach (var rating in estate.Ratings)
+                {
+                    ratingsSum += rating.Value;
+                    count += 1;
+                }
+
+                if (count != 0 && ratingsSum != 0)
+                {
+                    averageRating = ratingsSum / count;
+                    estatesByRating.Add(estate, averageRating);
+                }
+                else
+                {
+                    estatesByRating.Add(estate, averageRating);
+                    continue;
+                }
+            }
+
+            ViewBag.Estates = estatesByRating.OrderBy(e => e.Value);
             var appliances = this.appliances.GetAll().To<HomeIndexApplianceViewModel>().ToList();
             ViewBag.Appliances = appliances;
             

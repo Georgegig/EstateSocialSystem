@@ -14,9 +14,9 @@
             <h2>Estates</h2>
             <div>
                 @foreach (var estate in ViewBag.Estates)
-                {
+                {                  
                     <div>
-                        <a href="/Estate/Display/@estate.Id">@estate.Name</a>
+                        <a href="/Estate/Display/@estate.Key.Id">@estate.Key.Name</a>
                     </div>
                 }
             </div>

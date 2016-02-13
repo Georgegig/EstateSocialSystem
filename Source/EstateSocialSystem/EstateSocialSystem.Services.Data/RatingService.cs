@@ -2,6 +2,8 @@
 {
     using EstateSocialSystem.Data.Models;
     using EstateSocialSystem.Data.Common.Repository;
+    using System;
+    using System.Linq;
 
     public class RatingService : IRatingService
     {
@@ -14,8 +16,21 @@
 
         public void AddRating(Rating rating)
         {
-            this.ratings.Add(rating);
-            this.ratings.SaveChanges();
+            var ratingExists = ratings.All().Any(r => r.AuthorId == rating.AuthorId && r.EstateId == rating.EstateId);
+            if (!ratingExists)
+            {
+                this.ratings.Add(rating);
+                this.ratings.SaveChanges();
+            }
+            else
+            {
+                this.ratings.Update(this.ratings.All().FirstOrDefault(r => r.AuthorId == rating.AuthorId && r.EstateId == rating.EstateId));                
+            }
+        }
+
+        public IQueryable<Rating> GetAll()
+        {
+            return this.ratings.All();
         }
     }
 }
