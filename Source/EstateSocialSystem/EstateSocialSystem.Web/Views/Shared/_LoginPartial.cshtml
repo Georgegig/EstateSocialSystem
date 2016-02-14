@@ -15,10 +15,6 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="estateDropDown">
                     <li>@Html.ActionLink("Create", "Create", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
                 </ul>
             </div>
         </li>
@@ -31,15 +27,8 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
                     <li>@Html.ActionLink("Create", "Create", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
                 </ul>
             </div>
-        </li>
-        <li>
-            @Html.ActionLink("Manage Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "UserProfile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })

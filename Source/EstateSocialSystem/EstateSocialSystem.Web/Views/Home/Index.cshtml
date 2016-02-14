@@ -13,12 +13,23 @@
         {
             <h2>Estates</h2>
             <div>
-                @foreach (var estate in ViewBag.Estates)
-                {                  
-                    <div>
-                        <a href="/Estate/Display/@estate.Key.Id">@estate.Key.Name</a>
-                    </div>
-                }
+                <dl class="dl-horizontal">
+                    @foreach (var estate in ViewBag.Estates)
+                    {
+                        <dt>
+                            Estate Name
+                        </dt>
+                        <dd>
+                            <a href="/Estate/Display/@estate.Key.Id">@estate.Key.Name</a>
+                        </dd>
+                        <dt>
+                            Estate Ratings
+                        </dt>
+                        <dd>
+                            @estate.Key.Ratings.Count
+                        </dd>
+                    }
+                </dl>
             </div>
             <h2>Appliances</h2>
             <div>
