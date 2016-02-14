@@ -1,7 +1,6 @@
 ﻿namespace EstateSocialSystem.Data.Common.Repository
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;

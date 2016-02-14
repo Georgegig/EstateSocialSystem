@@ -3,17 +3,17 @@
     using System.Linq;
     using EstateSocialSystem.Data.Models;
     using EstateSocialSystem.Data.Common.Repository;
-    using System;
+    using EstateSocialSystem.Data;
 
     public class ApplianceService : IApplianceService
     {
         private readonly IDeletableEntityRepository<Appliance> appliances;
-        private readonly IDeletableEntityRepository<Estate> estates;
+        private readonly EstateSocialSystemDbContext context;
 
-        public ApplianceService(IDeletableEntityRepository<Appliance> appliances, IDeletableEntityRepository<Estate> estates)
+        public ApplianceService(IDeletableEntityRepository<Appliance> appliances, EstateSocialSystemDbContext context)
         {
             this.appliances = appliances;
-            this.estates = estates;
+            this.context = context;
         }
 
         public void AddAppliance(Appliance appliance)
@@ -22,10 +22,10 @@
             this.appliances.SaveChanges();
         }
 
-        public void AddApplianceToEstate(int applianceId, int estateId)
+        public void AddApplianceToEstate(int applianceId, int id)
         {
-            this.appliances.All().First(a => a.Id == applianceId).Estates.Add(this.estates.All().First(e => e.Id == estateId));
-            this.appliances.SaveChanges();
+            this.context.Appliances.First(a => a.Id == applianceId).Estates.Add(this.context.Estates.First(e => e.Id == id));
+            this.context.SaveChanges();
         }
 
         public IQueryable<Appliance> GetAll()

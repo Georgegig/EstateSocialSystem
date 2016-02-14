@@ -19,11 +19,11 @@
         // POST: Appliance AddToEstate
         [HttpPost]
         [Authorize]
-        public ActionResult AddToEstate(int applianceId, int estateId)
+        public ActionResult AddToEstate(int applianceId, int id)
         {
-            this.appliances.AddApplianceToEstate(applianceId, estateId);
+            this.appliances.AddApplianceToEstate(applianceId, id);
 
-            return this.RedirectToAction("Display", "Estate", new { id = estateId });
+            return this.RedirectToAction("Display", "Estate", new { id = id });
         }
 
         // GET: Appliance Create
