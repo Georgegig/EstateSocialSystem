@@ -48,7 +48,7 @@
                     continue;
                 }
             }
-
+            
             ViewBag.Estates = estatesByRating.OrderBy(e => e.Value);
             var appliances = this.appliances.GetAll().To<HomeIndexApplianceViewModel>().ToList();
             ViewBag.Appliances = appliances;

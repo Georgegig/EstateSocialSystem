@@ -3,7 +3,7 @@
 }
 
 <h2>Display</h2>
-<h2>EstateCharacteristics</h2>
+<h2>Estate Characteristics</h2>
 <div class="row">
     <div class="col-md-12 text-center">
         <h1>@ViewBag.EstateViewModel.Name</h1>
@@ -35,31 +35,33 @@
         </div>
     </div>
 </div>
-<select form="formAppliance" name="applianceId">
-    @foreach(var appliance in ViewBag.AllAppliances)
-    {
-        <option value="@appliance.Id">@appliance.Name</option>
-    }
-</select>
-<form action="/Appliance/AddToEstate/@ViewBag.EstateViewModel.Id" method="post" id="formAppliance">
-    <input type="submit" value="Add Appliance" />
-</form>
-<select form="formRate" name="rate">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-</select>
-<form action="/Rating/Add/@ViewBag.EstateViewModel.Id" method="post" id="formRate">
-    <input type="submit" value="Rate"/>
-</form>
 <form action="/Comment/Create/@ViewBag.EstateViewModel.Id" method="post">
     <label for="content">Content</label>
     <textarea id="content" name="content"></textarea>
     <input type="submit" value="Comment"/>
 </form>
-
+@if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
+{
+    <select form="formAppliance" name="applianceId">
+        @foreach (var appliance in ViewBag.AllAppliances)
+        {
+            <option value="@appliance.Id">@appliance.Name</option>
+        }
+    </select>
+    <form action="/Appliance/AddToEstate/@ViewBag.EstateViewModel.Id" method="post" id="formAppliance">
+        <input type="submit" value="Add Appliance" />
+    </form>
+    <select form="formRate" name="rate">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <form action="/Rating/Add/@ViewBag.EstateViewModel.Id" method="post" id="formRate">
+        <input type="submit" value="Rate" />
+    </form>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

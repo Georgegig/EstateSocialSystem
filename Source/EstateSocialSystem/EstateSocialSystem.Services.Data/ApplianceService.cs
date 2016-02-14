@@ -8,6 +8,7 @@
     public class ApplianceService : IApplianceService
     {
         private readonly IDeletableEntityRepository<Appliance> appliances;
+        //// TODO: FIX CONTEXT Duplication 
         private readonly EstateSocialSystemDbContext context;
 
         public ApplianceService(IDeletableEntityRepository<Appliance> appliances, EstateSocialSystemDbContext context)
