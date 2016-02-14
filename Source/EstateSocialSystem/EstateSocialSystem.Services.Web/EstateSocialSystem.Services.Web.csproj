@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpCacheService.cs" />
+    <Compile Include="CacheService.cs" />
     <Compile Include="ICacheService.cs" />
     <Compile Include="IdentifierProvider.cs" />
     <Compile Include="IIdentifierProvider.cs" />

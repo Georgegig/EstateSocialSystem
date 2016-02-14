@@ -1,21 +1,16 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using EstateSocialSystem.Web.Models;
-using EstateSocialSystem.Data.Models;
-using System.Web.Security;
-using EstateSocialSystem.Data.Common.Repository;
-
-namespace EstateSocialSystem.Web.Controllers
+﻿namespace EstateSocialSystem.Web.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using Models;
+    using Data.Models;
+    using Data.Common.Repository;
+
     [Authorize]
     public class AccountController : Controller
     {
