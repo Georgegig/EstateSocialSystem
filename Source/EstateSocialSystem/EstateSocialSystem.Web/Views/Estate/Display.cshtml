@@ -1,22 +1,22 @@
-﻿@model  EstateSocialSystem.Web.Models.EstateDisplayViewModel
-@{ 
+﻿@{ 
     ViewBag.Title = "Display";
 }
+
 <h2>Display</h2>
 <h2>EstateCharacteristics</h2>
 <div class="row">
     <div class="col-md-12 text-center">
-        <h1>@Model.Name</h1>
+        <h1>@ViewBag.EstateViewModel.Name</h1>
     </div>
     <div class="col-md-12 text-center">
-        <h4>@Model.Address</h4>
+        <h4>@ViewBag.EstateViewModel.Address</h4>
     </div>
     <div class="col-md-12 text-center">
-        <h4>@Model.Size</h4>
+        <h4>@ViewBag.EstateViewModel.Size</h4>
     </div>
     <div class="col-md-12">
         <div class="row">
-            @foreach (var comment in Model.Comments)
+            @foreach (var comment in ViewBag.EstateViewModel.Comments)
             {
                 <div class="col-md-12 text-center">
                     <div class="panel panel-primary">
@@ -35,6 +35,15 @@
         </div>
     </div>
 </div>
+<select form="formAppliance" name="appliance">
+    @foreach(var appliance in ViewBag.AllAppliances)
+    {
+        <option value="@appliance.Id">@appliance.Name</option>
+    }
+</select>
+<form action="/Appliance/AddToEstate/@ViewBag.EstateViewModel.Id" method="post" id="formAppliance">
+    <input type="submit" value="Add Appliance" />
+</form>
 <select form="formRate" name="rate">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -42,10 +51,10 @@
     <option value="4">4</option>
     <option value="5">5</option>
 </select>
-<form action="/Rating/Add/@Model.Id" method="post" id="formRate">
+<form action="/Rating/Add/@ViewBag.EstateViewModel.Id" method="post" id="formRate">
     <input type="submit" value="Rate"/>
 </form>
-<form action="/Comment/Create/@Model.Id" method="post">
+<form action="/Comment/Create/@ViewBag.EstateViewModel.Id" method="post">
     <label for="content">Content</label>
     <textarea id="content" name="content"></textarea>
     <input type="submit" value="Comment"/>

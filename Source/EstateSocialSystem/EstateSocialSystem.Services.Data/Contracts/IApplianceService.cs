@@ -8,5 +8,7 @@
         void AddAppliance(Appliance appliance);
 
         IQueryable<Appliance> GetAll();
+
+        void AddApplianceToEstate(int applianceId, int estateId);
     }
 }

@@ -16,7 +16,17 @@
             this.appliances = appliances;
         }
 
-        // GET: Appliance
+        // POST: Appliance AddToEstate
+        [HttpPost]
+        [Authorize]
+        public ActionResult AddToEstate(int applianceId, int estateId)
+        {
+            this.appliances.AddApplianceToEstate(applianceId, estateId);
+
+            return this.RedirectToAction("Display", "Estate", new { id = estateId });
+        }
+
+        // GET: Appliance Create
         public ActionResult Create()
         {
             return View();

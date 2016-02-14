@@ -17,8 +17,8 @@
         public string Address { get; set; }
 
         [Display(Name = "Size")]
-        public double Size { get; set; }
-                
+        public double Size { get; set; }    
+
         public IEnumerable<Comment> Comments { get; set; }
     }
 }

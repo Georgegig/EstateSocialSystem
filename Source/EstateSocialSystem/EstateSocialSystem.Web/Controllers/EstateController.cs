@@ -11,10 +11,12 @@
     public class EstateController : Controller
     {
         private readonly IEstateService estates;
+        private readonly IApplianceService appliances;
 
-        public EstateController(IEstateService estates)
+        public EstateController(IEstateService estates, IApplianceService appliances)
         {
             this.estates = estates;
+            this.appliances = appliances;
         }
 
         // GET: Estate Create
@@ -53,8 +55,12 @@
         {            
             var estateById = this.estates.GetById(id);
             var estateViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<EstateDisplayViewModel>(estateById);
+            var allAppliances = this.appliances.GetAll();
+            
+            ViewBag.EstateViewModel = estateViewModel;
+            ViewBag.AllAppliances = allAppliances;
 
-            return View(estateViewModel);
+            return View(ViewBag);
         }
     }
 }
