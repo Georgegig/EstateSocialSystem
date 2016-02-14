@@ -81,6 +81,10 @@ namespace EstateSocialSystem.Web.App_Start
                 .SelectAllClasses()
                 .BindDefaultInterface());
 
+            kernel.Bind(b => b.From("EstateSocialSystem.Services.Web")
+                .SelectAllClasses()
+                .BindDefaultInterface());
+
             //kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
         }        
     }
