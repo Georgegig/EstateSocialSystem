@@ -303,6 +303,7 @@
     <Content Include="Views\Appliance\Create.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
     <Content Include="Views\Estate\Display.cshtml" />
+    <Content Include="Views\Account\RegisterOptions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />

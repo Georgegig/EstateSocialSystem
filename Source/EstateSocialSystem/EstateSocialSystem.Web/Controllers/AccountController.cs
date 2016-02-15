@@ -136,7 +136,13 @@
             }
         }
 
-        
+        // GET: /Account/RegisterOptions
+        [AllowAnonymous]
+        public ActionResult RegisterOptions()
+        {
+            return View();
+        }
+
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
