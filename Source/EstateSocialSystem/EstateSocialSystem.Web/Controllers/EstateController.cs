@@ -56,7 +56,22 @@
             var estateById = this.estates.GetById(id);
             var estateViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<EstateDisplayViewModel>(estateById);
             var allAppliances = this.appliances.GetAll();
-            
+            var estateRatingSum = 0;
+            var count = 0;
+            int estateAverageRating = 0;
+
+            foreach (var rating in estateViewModel.Ratings)
+            {
+                estateRatingSum += rating.Value;
+                count++;
+            }
+
+            if (count != 0 && estateRatingSum != 0)
+            {
+                estateAverageRating = estateRatingSum / count;
+            }
+
+            ViewBag.EstateAverageRating = estateAverageRating;
             ViewBag.EstateViewModel = estateViewModel;
             ViewBag.AllAppliances = allAppliances;
 

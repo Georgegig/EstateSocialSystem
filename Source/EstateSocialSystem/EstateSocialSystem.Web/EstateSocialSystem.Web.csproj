@@ -213,6 +213,7 @@
     <Compile Include="Controllers\EstateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -305,6 +306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />
+    <Folder Include="Views\Manufacturer\" />
     <Folder Include="Views\Rating\" />
   </ItemGroup>
   <ItemGroup>

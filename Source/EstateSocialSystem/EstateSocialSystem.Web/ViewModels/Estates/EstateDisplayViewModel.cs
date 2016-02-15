@@ -22,5 +22,7 @@
         public string AuthorId { get; set; }
 
         public IEnumerable<Comment> Comments { get; set; }
+
+        public IEnumerable<Rating> Ratings { get; set; }
     }
 }
