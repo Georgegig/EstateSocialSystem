@@ -5,7 +5,7 @@
     public class ManufacturerController : Controller
     {
         // GET: Manufacturer
-        public ActionResult Index()
+        public ActionResult Register()
         {
             return View();
         }

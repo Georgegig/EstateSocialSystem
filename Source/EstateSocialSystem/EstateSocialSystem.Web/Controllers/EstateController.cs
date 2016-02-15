@@ -51,7 +51,7 @@
         }
 
         // GET: Estate Display by ID
-        public ActionResult Display(int id)
+        public ActionResult Display(int id = 1)
         {            
             var estateById = this.estates.GetById(id);
             var estateViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<EstateDisplayViewModel>(estateById);

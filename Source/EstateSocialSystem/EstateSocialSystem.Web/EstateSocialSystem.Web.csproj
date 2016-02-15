@@ -304,10 +304,10 @@
     <Content Include="Views\Account\UserProfile.cshtml" />
     <Content Include="Views\Estate\Display.cshtml" />
     <Content Include="Views\Account\RegisterOptions.cshtml" />
+    <Content Include="Views\Manufacturer\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />
-    <Folder Include="Views\Manufacturer\" />
     <Folder Include="Views\Rating\" />
   </ItemGroup>
   <ItemGroup>
