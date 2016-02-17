@@ -99,5 +99,26 @@
 
             return View(viewModel);
         }
+
+        // GET: Estate View Personal Estates
+        [AllowAnonymous]
+        public ActionResult Personal(int id = 1)
+        {
+            var page = id;
+            var currentUserId = User.Identity.GetUserId();
+            var allItemsCount = this.estates.GetAll().Where(x => x.AuthorId == currentUserId).Count();
+            var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var itemsToSkip = (page - 1) * ItemsPerPage;
+            var estates = this.estates.GetAll().Where(x => x.AuthorId == currentUserId).OrderBy(x => x.CreatedOn).ThenBy(x => x.Id).Skip(itemsToSkip).Take(ItemsPerPage).To<EstatePersonalViewModel>().ToList();
+
+            var viewModel = new EstatePersonalListViewModel
+            {
+                CurrentPage = page,
+                TotalPages = (int)totalPages,
+                Estates = estates
+            };
+
+            return View(viewModel);
+        }
     }
 }

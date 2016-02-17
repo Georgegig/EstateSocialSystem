@@ -4,6 +4,7 @@
     using EstateSocialSystem.Data.Models;
     using EstateSocialSystem.Data.Common.Repository;
     using EstateSocialSystem.Data;
+    using System;
 
     public class ApplianceService : IApplianceService
     {
@@ -32,6 +33,11 @@
         public IQueryable<Appliance> GetAll()
         {
             return this.appliances.All();
+        }
+
+        public Appliance GetById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

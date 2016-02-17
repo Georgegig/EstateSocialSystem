@@ -10,5 +10,7 @@
         IQueryable<Appliance> GetAll();
 
         void AddApplianceToEstate(int applianceId, int estateId);
+
+        Appliance GetById(int id);
     }
 }

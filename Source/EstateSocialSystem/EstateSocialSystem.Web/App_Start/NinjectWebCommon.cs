@@ -15,6 +15,7 @@ namespace EstateSocialSystem.Web.App_Start
     using Data;
     using Data.Common.Repository;
     using Data.Models;
+    using Infrastructure;
 
     public static class NinjectWebCommon 
     {
@@ -76,6 +77,8 @@ namespace EstateSocialSystem.Web.App_Start
             kernel.Bind(typeof(IDeletableEntityRepository<>))
                 .To(typeof(DeletableEntityRepository<>));
 
+            kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
+
 
             kernel.Bind(b => b.From("EstateSocialSystem.Services.Data")
                 .SelectAllClasses()
@@ -84,8 +87,6 @@ namespace EstateSocialSystem.Web.App_Start
             kernel.Bind(b => b.From("EstateSocialSystem.Services.Web")
                 .SelectAllClasses()
                 .BindDefaultInterface());
-
-            //kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
         }        
     }
 }
