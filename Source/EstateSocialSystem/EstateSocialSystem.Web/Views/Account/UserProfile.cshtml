@@ -68,6 +68,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Update Account Information", "Update", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-    @Html.ActionLink("Manage Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    <div class="btn btn-default">
+        @Html.ActionLink("Update Account Information", "Update", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </div>
+    <div class="btn btn-default">
+        @Html.ActionLink("Manage Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </div>
 </p>
