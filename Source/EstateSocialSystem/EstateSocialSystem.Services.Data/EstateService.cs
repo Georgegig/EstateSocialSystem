@@ -21,6 +21,12 @@
             this.estates.SaveChanges();
         }
 
+        public void DeleteById(int id)
+        {
+            this.estates.Delete(id);
+            this.estates.SaveChanges();
+        }
+
         public IQueryable<Estate> GetAll()
         {
             return this.estates.All();

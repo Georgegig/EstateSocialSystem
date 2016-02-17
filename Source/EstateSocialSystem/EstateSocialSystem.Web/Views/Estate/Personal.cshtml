@@ -20,16 +20,29 @@
                             <th>Address</th>
                             <th>Size</th>
                             <th>Created on</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var estate in Model.Estates)
                         {
                             <tr>
-                                <td>@estate.Name</td>
+                                <td><a href="/Estate/Display/@estate.Id">@estate.Name</a></td>
                                 <td>@estate.Address</td>
                                 <td>@estate.Size</td>
                                 <td>@estate.CreatedOn</td>
+                                <td class="row">
+                                    <a href="/Estate/Update/@estate.Id" class="col-md-4 text-center">
+                                        <div class="btn-warning">
+                                            Update
+                                        </div>
+                                    </a>
+                                    <a href="/Estate/Delete/@estate.Id" class="col-md-4 text-center">
+                                        <div class="btn-danger">
+                                            Delete
+                                        </div>
+                                    </a>
+                                </td>
                             </tr>
                         }
                     </tbody>

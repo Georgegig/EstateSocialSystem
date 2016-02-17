@@ -120,5 +120,23 @@
 
             return View(viewModel);
         }
+
+        // GET: Estate Delete
+        [Authorize]
+        public ActionResult Delete(int id)
+        {
+            var estateToBeDeleted = this.estates.GetById(id);
+            var currentUserId = User.Identity.GetUserId();
+
+            if (estateToBeDeleted.AuthorId == currentUserId)
+            {
+                this.estates.DeleteById(id);
+
+                return this.RedirectToAction("Personal", "Estate");
+
+            }
+
+            return this.RedirectToAction("Unauthorized", "Common");
+        }
     }
 }

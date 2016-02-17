@@ -11,5 +11,7 @@
         IQueryable<Estate> GetAll();
 
         Estate GetById(int id);
+
+        void DeleteById(int id);
     }
 }
