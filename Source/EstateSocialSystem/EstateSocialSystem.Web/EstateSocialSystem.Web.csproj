@@ -235,6 +235,7 @@
     <Compile Include="ViewModels\Users\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Users\UpdateAccountViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -316,6 +317,7 @@
     <Content Include="Views\Estate\Personal.cshtml" />
     <Content Include="Views\Common\Unauthorized.cshtml" />
     <Content Include="Views\Estate\Update.cshtml" />
+    <Content Include="Views\Account\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />

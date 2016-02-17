@@ -10,6 +10,7 @@
     using Models;
     using Data.Models;
     using Data.Common.Repository;
+    using Web.Infrastructure.Mapping;
 
     [Authorize]
     public class AccountController : Controller
@@ -473,6 +474,46 @@
             var userModel = this.users.All().Where(u => u.Id == currentUserId).First();
 
             return View(userModel);
+        }
+
+
+        // GET: /Account/Update
+        [Authorize]
+        public ActionResult Update()
+        {
+            var currentUserId = User.Identity.GetUserId();
+            var userModel = this.users
+                .All()
+                .Where(u => u.Id == currentUserId)
+                .To<UpdateAccountViewModel>()
+                .First();
+
+            return View(userModel);
+        }
+
+        // Post: /Account/Update
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(UpdateAccountViewModel model)
+        {
+            var currentUserId = User.Identity.GetUserId();
+
+            var userToUpdate = this.users
+                .All()
+                .Where(u => u.Id == currentUserId)
+                .First();
+
+            userToUpdate.FirstName = model.FirstName;
+            userToUpdate.LastName = model.LastName;
+            userToUpdate.Avatar = model.Avatar;
+            userToUpdate.Address = model.Address;
+
+            this.users.Update(userToUpdate);
+            this.users.SaveChanges();
+
+
+            return this.RedirectToAction("UserProfile", "Account");
         }
 
         protected override void Dispose(bool disposing)

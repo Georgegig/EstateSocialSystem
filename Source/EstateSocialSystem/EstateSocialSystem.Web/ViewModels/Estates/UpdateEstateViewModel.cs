@@ -12,5 +12,7 @@
         public string Address { get; set; }
 
         public double Size { get; set; }
+
+        public string AuthorId { get; set; }
     }
 }

@@ -152,12 +152,19 @@
         public ActionResult Update(int id)
         {
             var estateToBeUpdated = this.estates
-                .GetAll()
-                .Where(e => e.Id == id)
-                .To<UpdateEstateViewModel>()
-                .First();
+                   .GetAll()
+                   .Where(e => e.Id == id)
+                   .To<UpdateEstateViewModel>()
+                   .First();
+            var currentUserId = User.Identity.GetUserId();
 
-            return View(estateToBeUpdated);
+            if (estateToBeUpdated.AuthorId == currentUserId)
+            {
+                return View(estateToBeUpdated);
+            }
+
+            return this.RedirectToAction("Unauthorized", "Common");
+            
         }
 
         // Post: Estate update
@@ -166,20 +173,26 @@
         [ValidateAntiForgeryToken]
         public ActionResult Update(UpdateEstateViewModel model)
         {
-            if (ModelState.IsValid)
+            var estateToUpdate = this.estates.GetById(model.Id);
+            var currentUserId = User.Identity.GetUserId();
+
+            if (estateToUpdate.AuthorId == currentUserId)
             {
-                var estateToUpdate = this.estates.GetById(model.Id);
+                if (ModelState.IsValid)
+                {
 
-                estateToUpdate.Name = model.Name;
-                estateToUpdate.Address = model.Address;
-                estateToUpdate.Size = model.Size;
+                    estateToUpdate.Name = model.Name;
+                    estateToUpdate.Address = model.Address;
+                    estateToUpdate.Size = model.Size;
 
-                this.estates.Update(estateToUpdate);
+                    this.estates.Update(estateToUpdate);
 
-                return this.RedirectToAction("Personal", "Estate");
+                    return this.RedirectToAction("Personal", "Estate");
+                }
+
             }
 
-            return this.View(model);
+            return this.RedirectToAction("Unauthorized", "Common");            
         }
     }
 }
