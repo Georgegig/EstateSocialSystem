@@ -27,7 +27,7 @@
                         @foreach (var estate in Model.Estates)
                         {
                             <tr>
-                                <td>@estate.Name</td>
+                                <td><a href="/Estate/Display/@estate.Id">@estate.Name</a></td>
                                 <td>@estate.Address</td>
                                 <td>@estate.Size</td>
                                 <td>@estate.Author</td>

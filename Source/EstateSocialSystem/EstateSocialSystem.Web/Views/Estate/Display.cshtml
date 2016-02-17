@@ -67,9 +67,13 @@
             <option value="@appliance.Id">@appliance.Name</option>
         }
     </select>
+    <br />
     <form action="/Appliance/AddToEstate/@ViewBag.EstateViewModel.Id" method="post" id="formAppliance">
+        <br />
         <input type="submit" value="Add Appliance" />
     </form>
+    <br />
+    <a href="/Appliance/Create" class="btn btn-default">Create Custom Appliance</a>
 }
 
 @section Scripts {
