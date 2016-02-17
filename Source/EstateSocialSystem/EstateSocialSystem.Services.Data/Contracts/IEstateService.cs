@@ -13,5 +13,7 @@
         Estate GetById(int id);
 
         void DeleteById(int id);
+
+        void Update(Estate estate);
     }
 }

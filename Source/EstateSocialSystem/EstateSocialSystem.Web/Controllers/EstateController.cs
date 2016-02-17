@@ -109,7 +109,15 @@
             var allItemsCount = this.estates.GetAll().Where(x => x.AuthorId == currentUserId).Count();
             var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
             var itemsToSkip = (page - 1) * ItemsPerPage;
-            var estates = this.estates.GetAll().Where(x => x.AuthorId == currentUserId).OrderBy(x => x.CreatedOn).ThenBy(x => x.Id).Skip(itemsToSkip).Take(ItemsPerPage).To<EstatePersonalViewModel>().ToList();
+            var estates = this.estates
+                .GetAll()
+                .Where(x => x.AuthorId == currentUserId)
+                .OrderBy(x => x.CreatedOn)
+                .ThenBy(x => x.Id)
+                .Skip(itemsToSkip)
+                .Take(ItemsPerPage)
+                .To<EstatePersonalViewModel>()
+                .ToList();
 
             var viewModel = new EstatePersonalListViewModel
             {
@@ -137,6 +145,41 @@
             }
 
             return this.RedirectToAction("Unauthorized", "Common");
+        }
+
+        // GET: Estate Update
+        [Authorize]
+        public ActionResult Update(int id)
+        {
+            var estateToBeUpdated = this.estates
+                .GetAll()
+                .Where(e => e.Id == id)
+                .To<UpdateEstateViewModel>()
+                .First();
+
+            return View(estateToBeUpdated);
+        }
+
+        // Post: Estate update
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(UpdateEstateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var estateToUpdate = this.estates.GetById(model.Id);
+
+                estateToUpdate.Name = model.Name;
+                estateToUpdate.Address = model.Address;
+                estateToUpdate.Size = model.Size;
+
+                this.estates.Update(estateToUpdate);
+
+                return this.RedirectToAction("Personal", "Estate");
+            }
+
+            return this.View(model);
         }
     }
 }

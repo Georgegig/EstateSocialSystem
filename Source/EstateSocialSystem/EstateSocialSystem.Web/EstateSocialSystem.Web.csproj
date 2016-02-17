@@ -226,6 +226,7 @@
     <Compile Include="ViewModels\Estates\EstatePersonalViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstateViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstateListViewModel.cs" />
+    <Compile Include="ViewModels\Estates\UpdateEstateViewModel.cs" />
     <Compile Include="ViewModels\Users\AccountViewModels.cs" />
     <Compile Include="ViewModels\Appliances\ApplianceCreateViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeIndexApplianceViewModel.cs" />
@@ -314,6 +315,7 @@
     <Content Include="Views\Estate\ViewAll.cshtml" />
     <Content Include="Views\Estate\Personal.cshtml" />
     <Content Include="Views\Common\Unauthorized.cshtml" />
+    <Content Include="Views\Estate\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />

@@ -39,5 +39,11 @@
                 .Where(e => e.Id == id)
                 .First();
         }
+
+        public void Update(Estate estate)
+        {
+            this.estates.Update(estate);
+            this.estates.SaveChanges();
+        }
     }
 }

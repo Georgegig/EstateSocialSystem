@@ -24,7 +24,10 @@
             }
             else
             {
-                var ratingToUpdate = this.ratings.All().FirstOrDefault(r => r.AuthorId == rating.AuthorId && r.EstateId == rating.EstateId);
+                var ratingToUpdate = this.ratings
+                    .All()
+                    .FirstOrDefault(r => r.AuthorId == rating.AuthorId && r.EstateId == rating.EstateId);
+
                 ratingToUpdate.Value = rating.Value;
 
                 this.ratings.Update(ratingToUpdate);
