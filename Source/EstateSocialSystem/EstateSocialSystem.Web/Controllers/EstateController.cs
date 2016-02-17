@@ -77,5 +77,12 @@
 
             return View(ViewBag);
         }
+        
+        // GET: Estate View All
+        [AllowAnonymous]
+        public ActionResult ViewAll()
+        {
+            return View();
+        }
     }
 }

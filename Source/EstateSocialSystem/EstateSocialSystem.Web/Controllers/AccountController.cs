@@ -143,19 +143,19 @@
             return View();
         }
 
-        // GET: /Account/Register
+        // GET: /Account/RegisterRegular
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult RegisterRegular()
         {
             return View();
         }
     
         
-        // POST: /Account/Register
+        // POST: /Account/RegisterRegular
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> RegisterRegular(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -164,7 +164,7 @@
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    IsManufacturer = model.IsManufacturer
+                    IsManufacturer = false
                 };
 
                 if (model.Avatar == null)
@@ -177,15 +177,7 @@
 
                 if (result.Succeeded)
                 {
-                    if (model.IsManufacturer)
-                    {
-                        UserManager.AddToRole(user.Id, "Manufacturer");
-                    }
-
-                    if (!(model.IsManufacturer))
-                    {
-                        UserManager.AddToRole(user.Id, "Regular");
-                    }
+                    UserManager.AddToRole(user.Id, "Regular");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     return RedirectToAction("Index", "Home");
@@ -197,7 +189,52 @@
             return View(model);
         }
 
-        
+        // GET: /Account/RegisterManufacturer
+        [AllowAnonymous]
+        public ActionResult RegisterManufacturer()
+        {
+            return View();
+        }
+
+        // POST: /Account/RegisterManufacturer
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterManufacturer(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    UserName = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    IsManufacturer = true
+                };
+
+                if (model.Avatar == null)
+                {
+                    user.Avatar = defaultAvatar;
+                }
+
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    UserManager.AddToRole(user.Id, "Manufacturer");
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    return RedirectToAction("Index", "Home");
+                }
+
+                AddErrors(result);
+            }
+
+            return View(model);
+        }
+
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)

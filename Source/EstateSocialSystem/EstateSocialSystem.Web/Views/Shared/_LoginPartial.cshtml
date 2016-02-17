@@ -6,21 +6,24 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        @if (User.IsInRole("Regular"))
-        {
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="estateDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-                            style="margin-top:8px;">
-                        Estate
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="estateDropDown">
-                        <li>@Html.ActionLink("Create", "Create", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
-                    </ul>
-                </div>
-            </li>
-        } 
+        <li>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="estateDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                        style="margin-top:8px;">
+                    Estate
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="estateDropDown">
+                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li class="divider"></li>
+                    @if (User.IsInRole("Regular"))
+                    {
+                        <li class="text-center">@Html.ActionLink("Create", "Create", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                        <li class="text-center">@Html.ActionLink("View Personal Estates", "ViewPersonal", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    }
+                </ul>
+            </div>
+        </li>
         @if (User.IsInRole("Manufacturer"))
         {
             <li>

@@ -286,7 +286,7 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\RegisterRegular.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -305,6 +305,7 @@
     <Content Include="Views\Estate\Display.cshtml" />
     <Content Include="Views\Account\RegisterOptions.cshtml" />
     <Content Include="Views\Manufacturer\Register.cshtml" />
+    <Content Include="Views\Account\RegisterManufacturer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />
