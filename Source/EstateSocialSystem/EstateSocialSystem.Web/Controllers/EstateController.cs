@@ -7,9 +7,11 @@
     using Models;
     using Microsoft.AspNet.Identity;
     using Services.Data;
+    using System.Linq;
 
     public class EstateController : Controller
     {
+        const int ItemsPerPage = 10;
         private readonly IEstateService estates;
         private readonly IApplianceService appliances;
 
@@ -80,9 +82,22 @@
         
         // GET: Estate View All
         [AllowAnonymous]
-        public ActionResult ViewAll()
+        public ActionResult ViewAll(int id = 1)
         {
-            return View();
+            var page = id;
+            var allItemsCount = this.estates.GetAll().Count();
+            var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var itemsToSkip = (page - 1) * ItemsPerPage;
+            var estates = this.estates.GetAll().OrderBy(x => x.CreatedOn).ThenBy(x => x.Id).Skip(itemsToSkip).Take(ItemsPerPage).To<EstateViewModel>().ToList();
+
+            var viewModel = new EstateListViewModel
+            {
+                CurrentPage = page,
+                TotalPages = (int)totalPages,
+                Estates = estates
+            };
+
+            return View(viewModel);
         }
     }
 }

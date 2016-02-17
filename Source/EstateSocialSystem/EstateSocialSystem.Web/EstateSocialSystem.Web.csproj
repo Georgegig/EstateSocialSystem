@@ -221,6 +221,8 @@
     </Compile>
     <Compile Include="ViewModels\Comments\CommentCreateViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstateDisplayViewModel.cs" />
+    <Compile Include="ViewModels\Estates\EstateViewModel.cs" />
+    <Compile Include="ViewModels\Estates\EstateListViewModel.cs" />
     <Compile Include="ViewModels\Users\AccountViewModels.cs" />
     <Compile Include="ViewModels\Appliances\ApplianceCreateViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeIndexApplianceViewModel.cs" />
@@ -306,6 +308,7 @@
     <Content Include="Views\Account\RegisterOptions.cshtml" />
     <Content Include="Views\Manufacturer\Register.cshtml" />
     <Content Include="Views\Account\RegisterManufacturer.cshtml" />
+    <Content Include="Views\Estate\ViewAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />
