@@ -7,17 +7,19 @@
 
     public class RatingController : Controller
     {
-        private readonly IEstateRatingService ratings;
+        private readonly IEstateRatingService estateRatings;
+        private readonly IApplianceRatingService applianceRatings;
 
-        public RatingController(EstateRatingService ratings)
+        public RatingController(IEstateRatingService estateRatings, IApplianceRatingService applianceRatings)
         {
-            this.ratings = ratings;
+            this.estateRatings = estateRatings;
+            this.applianceRatings = applianceRatings;
         }
 
-        // Post: Add Rating
+        // Post: Add EstateRating
         [HttpPost]
         [Authorize]
-        public ActionResult Add(int rate, int id)
+        public ActionResult AddEstateRating(int rate, int id)
         {
             var rating = new EstateRating
             {
@@ -26,9 +28,26 @@
                 AuthorId = User.Identity.GetUserId()
             };
 
-            this.ratings.AddRating(rating);
+            this.estateRatings.AddRating(rating);
 
             return this.RedirectToAction("Display", "Estate", new { id = id });
+        }
+
+        // Post: Add ApplianceRating
+        [HttpPost]
+        [Authorize]
+        public ActionResult AddApplianceRating(int rate, int id)
+        {
+            var rating = new ApplianceRating
+            {
+                Value = rate,
+                ApplianceId = id,
+                AuthorId = User.Identity.GetUserId()
+            };
+
+            this.applianceRatings.AddRating(rating);
+
+            return this.RedirectToAction("Display", "Appliance", new { id = id });
         }
     }
 }

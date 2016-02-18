@@ -5,6 +5,8 @@
 
     public class HomeIndexApplianceViewModel : IMapFrom<Appliance>
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
     }
 }

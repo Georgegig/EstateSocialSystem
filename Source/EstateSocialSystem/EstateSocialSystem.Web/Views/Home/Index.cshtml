@@ -36,7 +36,7 @@
                 @foreach (var appliance in ViewBag.Appliances)
                 {
                     <div>
-                        @appliance.Name
+                        <a href="/Appliance/Display/@appliance.Id">@appliance.Name</a>
                     </div>
                 }
             </div>

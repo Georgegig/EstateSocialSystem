@@ -220,6 +220,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Appliances\ApplianceDisplayViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentCreateViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstateDisplayViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstatePersonalListViewModel.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Views\Common\Unauthorized.cshtml" />
     <Content Include="Views\Estate\Update.cshtml" />
     <Content Include="Views\Account\Update.cshtml" />
+    <Content Include="Views\Appliance\Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Comment\" />

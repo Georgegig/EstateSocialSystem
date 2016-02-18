@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplianceCommentService.cs" />
+    <Compile Include="ApplianceRatingService.cs" />
     <Compile Include="ApplianceService.cs" />
+    <Compile Include="Contracts\IApplianceCommentService.cs" />
+    <Compile Include="Contracts\IApplianceRatingService.cs" />
     <Compile Include="EstateCommentService.cs" />
     <Compile Include="EstateService.cs" />
     <Compile Include="Contracts\IApplianceService.cs" />

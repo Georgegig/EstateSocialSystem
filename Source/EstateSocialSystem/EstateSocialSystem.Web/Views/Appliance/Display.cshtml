@@ -1,22 +1,28 @@
-﻿@{ 
+﻿@{
     ViewBag.Title = "Display";
 }
 
 <h2>Display</h2>
-<h2>Estate Characteristics</h2>
+<h2>Appliance Characteristics</h2>
 <div class="row">
     <div class="col-md-12 text-center">
-        <h1>@ViewBag.EstateViewModel.Name</h1>
+        <h1>@ViewBag.ApplianceViewModel.Name</h1>
     </div>
     <div class="col-md-12 text-center">
-        <h4>@ViewBag.EstateViewModel.Address</h4>
+        <h4>@ViewBag.ApplianceViewModel.Type</h4>
     </div>
     <div class="col-md-12 text-center">
-        <h4>@ViewBag.EstateViewModel.Size</h4>
+        <h4>@ViewBag.ApplianceViewModel.Power</h4>
+    </div>
+    <div class="col-md-12 text-center">
+        <h4>@ViewBag.ApplianceViewModel.Input</h4>
+    </div>
+    <div class="col-md-12 text-center">
+        <h4>@ViewBag.ApplianceViewModel.Output</h4>
     </div>
     <div class="col-md-12">
         <div class="row">
-            @foreach (var comment in ViewBag.EstateViewModel.Comments)
+            @foreach (var comment in ViewBag.ApplianceViewModel.Comments)
             {
                 <div class="col-md-12 text-center">
                     <div class="panel panel-primary">
@@ -34,18 +40,18 @@
             }
         </div>
     </div>
-    @if (ViewBag.EstateAverageRating != 0)
+    @if (ViewBag.ApplianceAverageRating != 0)
     {
         <div class="col-md-12">
             <h3>Rating</h3>
-            <h4>@ViewBag.EstateAverageRating</h4>
+            <h4>@ViewBag.ApplianceAverageRating</h4>
         </div>
     }
 </div>
-<form action="/Comment/CreateEstateComment/@ViewBag.EstateViewModel.Id" method="post">
+<form action="/Comment/CreateApplianceComment/@ViewBag.ApplianceViewModel.Id" method="post">
     <label for="content">Content</label>
     <textarea id="content" name="content"></textarea>
-    <input type="submit" value="Comment"/>
+    <input type="submit" value="Comment" />
 </form>
 <br />
 <select form="formRate" name="rate">
@@ -55,26 +61,9 @@
     <option value="4">4</option>
     <option value="5">5</option>
 </select>
-<form action="/Rating/AddEstateRating/@ViewBag.EstateViewModel.Id" method="post" id="formRate">
+<form action="/Rating/AddApplianceRating/@ViewBag.ApplianceViewModel.Id" method="post" id="formRate">
     <input type="submit" value="Rate" />
 </form>
-<br />
-@if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
-{
-    <select form="formAppliance" name="applianceId">
-        @foreach (var appliance in ViewBag.AllAppliances)
-        {
-            <option value="@appliance.Id">@appliance.Name</option>
-        }
-    </select>
-    <br />
-    <form action="/Appliance/AddToEstate/@ViewBag.EstateViewModel.Id" method="post" id="formAppliance">
-        <br />
-        <input type="submit" value="Add Appliance" />
-    </form>
-    <br />
-    <a href="/Appliance/Create" class="btn btn-default">Create Custom Appliance</a>
-}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

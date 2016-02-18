@@ -37,7 +37,7 @@
 
         public Appliance GetById(int id)
         {
-            throw new NotImplementedException();
+            return this.appliances.All().Where(a => a.Id == id).First();
         }
     }
 }

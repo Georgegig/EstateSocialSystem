@@ -3,22 +3,23 @@
     using Services.Data;
     using System.Web.Mvc;
     using Data.Models;
-    using Models;
     using Microsoft.AspNet.Identity;
 
     public class CommentController : Controller
     {
-        private readonly IEstateCommentService comments;
+        private readonly IEstateCommentService estateComments;
+        private readonly IApplianceCommentService applianceComments;
 
-        public CommentController(IEstateCommentService comments)
+        public CommentController(IEstateCommentService estateComments, IApplianceCommentService applianceComments)
         {
-            this.comments = comments;
+            this.estateComments = estateComments;
+            this.applianceComments = applianceComments;
         }
 
-        // Post: Create Comment
+        // Post: Create EstateComment
         [HttpPost]
         [Authorize]
-        public ActionResult Create(string content, int id)
+        public ActionResult CreateEstateComment(string content, int id)
         {
             var comment = new EstateComment
             {
@@ -27,9 +28,26 @@
                 EstateId = id
             };
 
-            this.comments.AddComment(comment);
+            this.estateComments.AddComment(comment);
 
             return this.RedirectToAction("Display", "Estate", new { id = id });
+        }
+
+        // Post: Create ApplianceComment
+        [HttpPost]
+        [Authorize]
+        public ActionResult CreateApplianceComment(string content, int id)
+        {
+            var comment = new ApplianceComment
+            {
+                Content = content,
+                AuthorId = User.Identity.GetUserId(),
+                ApplianceId = id
+            };
+
+            this.applianceComments.AddComment(comment);
+
+            return this.RedirectToAction("Display", "Appliance", new { id = id });
         }
     }
 }

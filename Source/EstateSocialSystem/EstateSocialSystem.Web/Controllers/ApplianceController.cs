@@ -6,6 +6,8 @@
     using Microsoft.AspNet.Identity;
     using System;
     using System.Web.Mvc;
+    using Infrastructure.Mapping;
+    using Web.Models;
 
     public class ApplianceController : Controller
     {
@@ -61,6 +63,32 @@
             }
 
             return this.View(model);
+        }
+
+        // GET: Appliance Display by ID
+        public ActionResult Display(int id = 1)
+        {
+            var applianceById = this.appliances.GetById(id);
+            var applianceViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<ApplianceDisplayViewModel>(applianceById);
+            var applianceRatingSum = 0;
+            var count = 0;
+            int applianceAverageRating = 0;
+
+            foreach (var rating in applianceViewModel.Ratings)
+            {
+                applianceRatingSum += rating.Value;
+                count++;
+            }
+
+            if (count != 0 && applianceRatingSum != 0)
+            {
+                applianceAverageRating = applianceRatingSum / count;
+            }
+
+            ViewBag.ApplianceAverageRating = applianceAverageRating;
+            ViewBag.ApplianceViewModel = applianceViewModel;
+
+            return View(ViewBag);
         }
     }
 }
