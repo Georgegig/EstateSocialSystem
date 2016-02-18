@@ -1,0 +1,91 @@
+﻿@model EstateSocialSystem.Web.Models.AppliancePersonalListViewModel
+@{
+    ViewBag.Title = "Personal";
+}
+
+<h2>Personal</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <!--Display controller-->
+            <div class="col-md-12">
+                TODO
+            </div>
+            <!--Content-->
+            <div class="col-md-12">
+                <div class="text-center"><h1>Your Appliances</h1></div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Power</th>
+                            <th>Input</th>
+                            <th>Output</th>
+                            <th>Created on</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var appliance in Model.Appliances)
+                        {
+                            <tr>
+                                <td><a href="/Appliance/Display/@appliance.Id">@appliance.Name</a></td>
+                                <td>@appliance.Type</td>
+                                <td>@appliance.Power</td>
+                                <td>@appliance.Input</td>
+                                <td>@appliance.Output</td>
+                                <td>@appliance.CreatedOn</td>
+                                <td class="row">
+                                    <a href="/Appliance/Update/@appliance.Id" class="col-md-4 text-center">
+                                        <div class="btn btn-warning">
+                                            Update
+                                        </div>
+                                    </a>
+                                    <a href="/Appliance/Delete/@appliance.Id" class="col-md-4 text-center">
+                                        <div class="btn btn-danger">
+                                            Delete
+                                        </div>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-12 text-center">
+                <nav>
+                    <ul class="pagination">
+                        @if (Model.CurrentPage > 1)
+                        {
+                            <li>
+                                <a href="/Appliance/Personal/@(Model.CurrentPage - 1)" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        }
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            var className = string.Empty;
+
+                            if (Model.CurrentPage == i)
+                            {
+                                className = "active";
+                            }
+
+                            <li class="@className"><a href="/Appliance/Personal/@i">@i</a></li>
+                        }
+                        @if (Model.CurrentPage < Model.TotalPages)
+                        {
+                            <li>
+                                <a href="/Appliance/Personal/@(Model.CurrentPage + 1)" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

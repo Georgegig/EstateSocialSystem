@@ -180,7 +180,6 @@
             {
                 if (ModelState.IsValid)
                 {
-
                     estateToUpdate.Name = model.Name;
                     estateToUpdate.Address = model.Address;
                     estateToUpdate.Size = model.Size;
@@ -189,7 +188,6 @@
 
                     return this.RedirectToAction("Personal", "Estate");
                 }
-
             }
 
             return this.RedirectToAction("Unauthorized", "Common");            

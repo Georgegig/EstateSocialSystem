@@ -66,6 +66,72 @@
             return this.View(model);
         }
 
+        // GET: Appliance Update
+        [Authorize]
+        public ActionResult Update(int id)
+        {
+            var applianceToBeUpdated = this.appliances
+                   .GetAll()
+                   .Where(e => e.Id == id)
+                   .To<UpdateApplianceViewModel>()
+                   .First();
+            var currentUserId = User.Identity.GetUserId();
+
+            if (applianceToBeUpdated.ManufacturerId == currentUserId)
+            {
+                return View(applianceToBeUpdated);
+            }
+
+            return this.RedirectToAction("Unauthorized", "Common");
+
+        }
+
+        // Post: Estate update
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(UpdateApplianceViewModel model)
+        {
+            var applianceToUpdate = this.appliances.GetById(model.Id);
+            var currentUserId = User.Identity.GetUserId();
+
+            if (applianceToUpdate.ManufacturerId == currentUserId)
+            {
+                if (ModelState.IsValid)
+                {
+                    applianceToUpdate.Name = model.Name;
+                    applianceToUpdate.Type = model.Type;
+                    applianceToUpdate.Power = model.Power;
+                    applianceToUpdate.Input = model.Input;
+                    applianceToUpdate.Output = model.Output;
+
+                    this.appliances.Update(applianceToUpdate);
+
+                    return this.RedirectToAction("Personal", "Appliance");
+                }
+            }
+
+            return this.RedirectToAction("Unauthorized", "Common");
+        }
+
+        // GET: Appliance Delete
+        [Authorize]
+        public ActionResult Delete(int id)
+        {
+            var applianceToBeDeleted = this.appliances.GetById(id);
+            var currentUserId = User.Identity.GetUserId();
+
+            if (applianceToBeDeleted.ManufacturerId == currentUserId)
+            {
+                this.appliances.DeleteById(id);
+
+                return this.RedirectToAction("Personal", "Appliance");
+
+            }
+
+            return this.RedirectToAction("Unauthorized", "Common");
+        }
+
         // GET: Appliance View All
         [AllowAnonymous]
         public ActionResult ViewAll(int id = 1)
@@ -74,9 +140,48 @@
             var allItemsCount = this.appliances.GetAll().Count();
             var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
             var itemsToSkip = (page - 1) * ItemsPerPage;
-            var appliances = this.appliances.GetAll().OrderBy(x => x.CreatedOn).ThenBy(x => x.Id).Skip(itemsToSkip).Take(ItemsPerPage).To<ApplianceViewModel>().ToList();
+            var appliances = this.appliances
+                .GetAll()
+                .OrderBy(x => x.CreatedOn)
+                .ThenBy(x => x.Id)
+                .Skip(itemsToSkip)
+                .Take(ItemsPerPage)
+                .To<ApplianceViewModel>()
+                .ToList();
 
             var viewModel = new ApplianceListViewModel
+            {
+                CurrentPage = page,
+                TotalPages = (int)totalPages,
+                Appliances = appliances
+            };
+
+            return View(viewModel);
+        }
+
+        // GET: Estate View Personal Appliances
+        [AllowAnonymous]
+        public ActionResult Personal(int id = 1)
+        {
+            var page = id;
+            var currentUserId = User.Identity.GetUserId();
+            var allItemsCount = this.appliances
+                .GetAll()
+                .Where(x => x.ManufacturerId == currentUserId)
+                .Count();
+            var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var itemsToSkip = (page - 1) * ItemsPerPage;
+            var appliances = this.appliances
+                .GetAll()
+                .Where(x => x.ManufacturerId == currentUserId)
+                .OrderBy(x => x.CreatedOn)
+                .ThenBy(x => x.Id)
+                .Skip(itemsToSkip)
+                .Take(ItemsPerPage)
+                .To<AppliancePersonalViewModel>()
+                .ToList();
+
+            var viewModel = new AppliancePersonalListViewModel
             {
                 CurrentPage = page,
                 TotalPages = (int)totalPages,

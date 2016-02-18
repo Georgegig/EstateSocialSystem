@@ -12,5 +12,9 @@
         void AddApplianceToEstate(int applianceId, int estateId);
 
         Appliance GetById(int id);
+
+        void DeleteById(int id);
+
+        void Update(Appliance estate);
     }
 }

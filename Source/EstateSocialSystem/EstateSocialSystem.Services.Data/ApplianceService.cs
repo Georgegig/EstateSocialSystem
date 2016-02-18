@@ -38,5 +38,17 @@
         {
             return this.appliances.All().Where(a => a.Id == id).First();
         }
+
+        public void Update(Appliance estate)
+        {
+            this.appliances.Update(estate);
+            this.appliances.SaveChanges();
+        }
+
+        public void DeleteById(int id)
+        {
+            this.appliances.Delete(id);
+            this.appliances.SaveChanges();
+        }
     }
 }
