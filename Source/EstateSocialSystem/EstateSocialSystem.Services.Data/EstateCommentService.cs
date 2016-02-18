@@ -3,16 +3,16 @@
     using EstateSocialSystem.Data.Common.Repository;
     using EstateSocialSystem.Data.Models;
 
-    public class CommentService : ICommentService
+    public class EstateCommentService : IEstateCommentService
     {
-        private readonly IDeletableEntityRepository<Comment> comments;
+        private readonly IDeletableEntityRepository<EstateComment> comments;
 
-        public CommentService(IDeletableEntityRepository<Comment> comments)
+        public EstateCommentService(IDeletableEntityRepository<EstateComment> comments)
         {
             this.comments = comments;
         }
 
-        public void AddComment(Comment comment)
+        public void AddComment(EstateComment comment)
         {
             this.comments.Add(comment);
             this.comments.SaveChanges();

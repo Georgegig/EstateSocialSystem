@@ -8,9 +8,9 @@
 
     public class CommentController : Controller
     {
-        private readonly ICommentService comments;
+        private readonly IEstateCommentService comments;
 
-        public CommentController(ICommentService comments)
+        public CommentController(IEstateCommentService comments)
         {
             this.comments = comments;
         }
@@ -20,7 +20,7 @@
         [Authorize]
         public ActionResult Create(string content, int id)
         {
-            var comment = new Comment
+            var comment = new EstateComment
             {
                 Content = content,
                 AuthorId = User.Identity.GetUserId(),

@@ -5,10 +5,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Comment : AuditInfo, IDeletableEntity
+    public class ApplianceComment : AuditInfo, IDeletableEntity
     {
         public int Id { get; set; }
-        
+
         [Required]
         [MaxLength(1000)]
         public string Content { get; set; }
@@ -22,9 +22,9 @@
         [ForeignKey("AuthorId")]
         public virtual User Author { get; set; }
 
-        public int EstateId { get; set; }
+        public int ApplianceId { get; set; }
 
-        [ForeignKey("EstateId")]
-        public virtual Estate Estate { get; set; }
+        [ForeignKey("ApplianceId")]
+        public virtual Appliance Appliance { get; set; }
     }
 }

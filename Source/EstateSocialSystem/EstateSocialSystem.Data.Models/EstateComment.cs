@@ -2,14 +2,20 @@
 {
     using Common.Models;
     using System;
-    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Rating : AuditInfo, IDeletableEntity
+    public class EstateComment : AuditInfo, IDeletableEntity
     {
         public int Id { get; set; }
+        
+        [Required]
+        [MaxLength(1000)]
+        public string Content { get; set; }
 
-        public int Value { get; set; }
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         public string AuthorId { get; set; }
 
@@ -19,10 +25,6 @@
         public int EstateId { get; set; }
 
         [ForeignKey("EstateId")]
-        public virtual Estate Estate { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
+        public virtual Estate Estate { get; set; }        
     }
 }

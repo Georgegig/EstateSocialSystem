@@ -9,10 +9,14 @@
     public class Appliance : AuditInfo, IDeletableEntity
     {
         private ICollection<Estate> estates;
+        private ICollection<ApplianceComment> comments;
+        private ICollection<ApplianceRating> ratings;
 
         public Appliance()
         {
             this.estates = new HashSet<Estate>();
+            this.comments = new HashSet<ApplianceComment>();
+            this.ratings = new HashSet<ApplianceRating>();
         }
 
         public int Id { get; set; }
@@ -39,6 +43,10 @@
         public int Output { get; set; }
 
         public virtual ICollection<Estate> Estates { get { return this.estates; } set { this.estates = value; } }
+
+        public virtual ICollection<ApplianceComment> Comments { get { return this.comments; } set { this.comments = value; } }
+
+        public virtual ICollection<ApplianceRating> Ratings { get { return this.ratings; } set { this.ratings = value; } }
 
         public DateTime? DeletedOn { get; set; }
 

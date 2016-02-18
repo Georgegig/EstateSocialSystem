@@ -5,16 +5,16 @@
     using System;
     using System.Linq;
 
-    public class RatingService : IRatingService
+    public class EstateRatingService : IEstateRatingService
     {
-        private readonly IDeletableEntityRepository<Rating> ratings;
+        private readonly IDeletableEntityRepository<EstateRating> ratings;
 
-        public RatingService(IDeletableEntityRepository<Rating> ratings)
+        public EstateRatingService(IDeletableEntityRepository<EstateRating> ratings)
         {
             this.ratings = ratings;
         }
 
-        public void AddRating(Rating rating)
+        public void AddRating(EstateRating rating)
         {
             var ratingExists = ratings.All().Any(r => r.AuthorId == rating.AuthorId && r.EstateId == rating.EstateId);
             if (!ratingExists)
@@ -35,7 +35,7 @@
             }
         }
 
-        public IQueryable<Rating> GetAll()
+        public IQueryable<EstateRating> GetAll()
         {
             return this.ratings.All();
         }

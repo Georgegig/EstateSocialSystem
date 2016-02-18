@@ -7,9 +7,9 @@
 
     public class RatingController : Controller
     {
-        private readonly IRatingService ratings;
+        private readonly IEstateRatingService ratings;
 
-        public RatingController(RatingService ratings)
+        public RatingController(EstateRatingService ratings)
         {
             this.ratings = ratings;
         }
@@ -19,7 +19,7 @@
         [Authorize]
         public ActionResult Add(int rate, int id)
         {
-            var rating = new Rating
+            var rating = new EstateRating
             {
                 Value = rate,
                 EstateId = id,

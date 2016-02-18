@@ -12,6 +12,6 @@
 
         public string AuthorId { get; set; }
 
-        public IEnumerable<Rating> Ratings { get; set; }
+        public IEnumerable<EstateRating> Ratings { get; set; }
     }
 }

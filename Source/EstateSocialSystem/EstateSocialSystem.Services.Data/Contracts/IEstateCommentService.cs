@@ -2,8 +2,8 @@
 {
     using EstateSocialSystem.Data.Models;
 
-    public interface ICommentService
+    public interface IEstateCommentService
     {
-        void AddComment(Comment comment);
+        void AddComment(EstateComment comment);
     }
 }
