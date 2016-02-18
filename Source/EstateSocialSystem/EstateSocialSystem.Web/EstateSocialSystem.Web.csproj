@@ -207,6 +207,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
+    <Compile Include="Areas\Forum\ForumAreaRegistration.cs" />
+    <Compile Include="Areas\Market\MarketAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplianceController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -262,6 +266,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Forum\Views\web.config" />
+    <Content Include="Areas\Blog\Views\web.config" />
+    <Content Include="Areas\Market\Views\web.config" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -330,6 +338,18 @@
     <Content Include="Views\Appliance\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Administration\Controllers\" />
+    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Blog\Controllers\" />
+    <Folder Include="Areas\Blog\Models\" />
+    <Folder Include="Areas\Blog\Views\Shared\" />
+    <Folder Include="Areas\Forum\Controllers\" />
+    <Folder Include="Areas\Forum\Models\" />
+    <Folder Include="Areas\Forum\Views\Shared\" />
+    <Folder Include="Areas\Market\Controllers\" />
+    <Folder Include="Areas\Market\Models\" />
+    <Folder Include="Areas\Market\Views\Shared\" />
     <Folder Include="Views\Comment\" />
     <Folder Include="Views\Rating\" />
   </ItemGroup>
