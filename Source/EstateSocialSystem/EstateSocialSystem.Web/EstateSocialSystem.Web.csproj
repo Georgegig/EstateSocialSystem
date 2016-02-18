@@ -270,6 +270,10 @@
     <Content Include="Areas\Forum\Views\web.config" />
     <Content Include="Areas\Blog\Views\web.config" />
     <Content Include="Areas\Market\Views\web.config" />
+    <Content Include="Areas\Market\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Forum\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
