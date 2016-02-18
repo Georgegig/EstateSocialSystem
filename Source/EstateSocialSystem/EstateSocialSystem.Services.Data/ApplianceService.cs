@@ -4,7 +4,6 @@
     using EstateSocialSystem.Data.Models;
     using EstateSocialSystem.Data.Common.Repository;
     using EstateSocialSystem.Data;
-    using System;
 
     public class ApplianceService : IApplianceService
     {

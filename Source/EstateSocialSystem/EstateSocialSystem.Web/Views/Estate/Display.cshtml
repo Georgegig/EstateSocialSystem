@@ -4,6 +4,15 @@
 
 <h2>Display</h2>
 <h2>Estate Characteristics</h2>
+@if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
+{    
+    <a href="/Estate/Update/@ViewBag.EstateViewModel.Id">
+        <div class="btn btn-warning">Update</div>
+    </a>
+    <a href="/Estate/Delete/@ViewBag.EstateViewModel.Id">
+        <div class="btn btn-danger">Delete</div>
+    </a>
+}
 <div class="row">
     <div class="col-md-12 text-center">
         <h1>@ViewBag.EstateViewModel.Name</h1>

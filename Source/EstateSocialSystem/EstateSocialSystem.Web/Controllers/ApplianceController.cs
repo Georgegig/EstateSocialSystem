@@ -7,10 +7,11 @@
     using System;
     using System.Web.Mvc;
     using Infrastructure.Mapping;
-    using Web.Models;
+    using System.Linq;
 
     public class ApplianceController : Controller
     {
+        private const int ItemsPerPage = 10;
         private readonly IApplianceService appliances;
 
         public ApplianceController(IApplianceService appliances)
@@ -63,6 +64,26 @@
             }
 
             return this.View(model);
+        }
+
+        // GET: Appliance View All
+        [AllowAnonymous]
+        public ActionResult ViewAll(int id = 1)
+        {
+            var page = id;
+            var allItemsCount = this.appliances.GetAll().Count();
+            var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var itemsToSkip = (page - 1) * ItemsPerPage;
+            var appliances = this.appliances.GetAll().OrderBy(x => x.CreatedOn).ThenBy(x => x.Id).Skip(itemsToSkip).Take(ItemsPerPage).To<ApplianceViewModel>().ToList();
+
+            var viewModel = new ApplianceListViewModel
+            {
+                CurrentPage = page,
+                TotalPages = (int)totalPages,
+                Appliances = appliances
+            };
+
+            return View(viewModel);
         }
 
         // GET: Appliance Display by ID

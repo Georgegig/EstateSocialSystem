@@ -3,8 +3,6 @@
     using System.Linq;
     using EstateSocialSystem.Data.Models;
     using EstateSocialSystem.Data.Common.Repository;
-    using System.Collections.Generic;
-    using System;
 
     public class EstateService : IEstateService
     {

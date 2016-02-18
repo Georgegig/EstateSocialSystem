@@ -24,21 +24,24 @@
                 </ul>
             </div>
         </li>
-        @if (User.IsInRole("Manufacturer"))
-        {
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="applianceDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-                            style="margin-top:8px;">
-                        Appliance
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
+        <li>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="applianceDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                        style="margin-top:8px;">
+                    Appliance
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
+                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li class="divider"></li>
+                    @if (User.IsInRole("Manufacturer"))
+                    {
                         <li>@Html.ActionLink("Create", "Create", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
-                    </ul>
-                </div>
-            </li>
-        }
+                        <li class="text-center">@Html.ActionLink("View Personal Appliances", "Personal", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    }
+                </ul>
+            </div>
+        </li>
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "UserProfile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
@@ -58,6 +61,19 @@ else
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="estateDropDown">
                     <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li class="divider"></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="applianceDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                        style="margin-top:8px;">
+                    Appliance
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
+                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
                     <li class="divider"></li>
                 </ul>
             </div>
