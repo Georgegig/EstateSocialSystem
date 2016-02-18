@@ -1,5 +1,2 @@
 EstateSocialSystem
 ===========
-
-// TODO: 
-  *Automapper
