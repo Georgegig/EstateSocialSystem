@@ -74,6 +74,8 @@ namespace EstateSocialSystem.Web.App_Start
             kernel.Bind(typeof(IRepository<EstateRating>)).To(typeof(IDeletableEntityRepository<EstateRating>));
             kernel.Bind(typeof(IRepository<ApplianceComment>)).To(typeof(IDeletableEntityRepository<ApplianceComment>));
             kernel.Bind(typeof(IRepository<ApplianceRating>)).To(typeof(IDeletableEntityRepository<ApplianceRating>));
+            kernel.Bind(typeof(IRepository<Post>)).To(typeof(IDeletableEntityRepository<Post>));
+            kernel.Bind(typeof(IRepository<Tag>)).To(typeof(IDeletableEntityRepository<Tag>));
 
             kernel.Bind<DbContext>().To<EstateSocialSystemDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));

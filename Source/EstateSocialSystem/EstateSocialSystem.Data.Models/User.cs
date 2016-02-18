@@ -14,19 +14,27 @@
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser, IAuditInfo, IDeletableEntity
     {
+        //// SOCIAL SYSTEM
         private ICollection<Estate> estates;
         private ICollection<Appliance> appliances;
         private ICollection<EstateRating> ratings;
         private ICollection<EstateComment> comments;
 
+        //// FORUM SYSTEM
+        private ICollection<Post> posts;
+
         public User()
         {
+            //// SOCIAL SYSTEM
             // This will prevent UserManager.CreateAsync from causing exception
             this.CreatedOn = DateTime.Now;
             this.estates = new HashSet<Estate>();
             this.appliances = new HashSet<Appliance>();
             this.ratings = new HashSet<EstateRating>();
             this.comments = new HashSet<EstateComment>();
+
+            ////FORUM SYSTEM
+            this.posts = new HashSet<Post>();
         }
 
         [Required]
@@ -72,5 +80,9 @@
         public virtual ICollection<EstateRating> Ratings { get { return this.ratings; } set { this.ratings = value; } }
 
         public virtual ICollection<EstateComment> Comments { get { return this.comments; } set { this.comments = value; } }
+
+        ////FORUM SYSTEM
+        public virtual ICollection<Post> Posts { get { return this.posts; } set { this.posts = value; } }
+
     }
 }
