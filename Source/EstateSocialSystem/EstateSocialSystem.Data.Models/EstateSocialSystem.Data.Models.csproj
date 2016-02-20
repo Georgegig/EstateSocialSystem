@@ -57,17 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appliance.cs" />
-    <Compile Include="ApplianceComment.cs" />
-    <Compile Include="ApplianceRating.cs" />
-    <Compile Include="EstateComment.cs" />
-    <Compile Include="Estate.cs" />
-    <Compile Include="Manufacturer.cs" />
-    <Compile Include="Post.cs" />
+    <Compile Include="ForumModels\Answer.cs" />
+    <Compile Include="ForumModels\PostVote.cs" />
+    <Compile Include="ForumModels\VoteType.cs" />
+    <Compile Include="SocialSystemModels\Appliance.cs" />
+    <Compile Include="SocialSystemModels\ApplianceComment.cs" />
+    <Compile Include="SocialSystemModels\ApplianceRating.cs" />
+    <Compile Include="SocialSystemModels\EstateComment.cs" />
+    <Compile Include="SocialSystemModels\Estate.cs" />
+    <Compile Include="SocialSystemModels\Manufacturer.cs" />
+    <Compile Include="ForumModels\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EstateRating.cs" />
-    <Compile Include="Tag.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="SocialSystemModels\EstateRating.cs" />
+    <Compile Include="ForumModels\Tag.cs" />
+    <Compile Include="User\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

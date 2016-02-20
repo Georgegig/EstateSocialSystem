@@ -28,9 +28,11 @@
 
         public IDbSet<ApplianceRating> ApplianceRating { get; set; }
 
+        public IDbSet<Tag> Tags { get; set; }
+
         public IDbSet<Post> Posts { get; set; }
 
-        public IDbSet<Tag> Tags { get; set; }
+        public IDbSet<Answer> Answers { get; set; }
 
         public static EstateSocialSystemDbContext Create()
         {
