@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<EstateSocialSystem.Web.Areas.Forum.ViewModels.IndexBlogPostViewModel>
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Forum Index Page";
 }
+<h1>@ViewBag.Title</h1>
+<br/>    
 <div class="container">
     @foreach (var post in Model)
     {

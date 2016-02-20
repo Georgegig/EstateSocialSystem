@@ -9,12 +9,12 @@
     using Infrastructure.Mapping;
 
     [Authorize]
-    public class PageableFeedbackListController : Controller
+    public class PageableAnswerListController : Controller
     {
         const int ItemsPerPage = 4;
         private readonly IDeletableEntityRepository<Answer> answers;
 
-        public PageableFeedbackListController(IDeletableEntityRepository<Answer> answers)
+        public PageableAnswerListController(IDeletableEntityRepository<Answer> answers)
         {
             this.answers = answers;
         }
@@ -23,9 +23,9 @@
         public ActionResult Index(int id = 1)
         {
             AnswerListViewModel viewModel;
-            if (this.HttpContext.Cache["Feedback page_" + id] != null)
+            if (this.HttpContext.Cache["Answer page_" + id] != null)
             {
-                viewModel = (AnswerListViewModel)this.HttpContext.Cache["Feedback page_" + id];
+                viewModel = (AnswerListViewModel)this.HttpContext.Cache["Answer page_" + id];
             }
             else
             {
@@ -33,7 +33,7 @@
                 var allItemsCount = this.answers.All().Count();
                 var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
                 var itemsToSkip = (page - 1) * ItemsPerPage;
-                var feedbacks = this.answers.All()
+                var Answers = this.answers.All()
                     .OrderBy(x => x.CreatedOn)
                     .ThenBy(x => x.Id)
                     .Skip(itemsToSkip)
@@ -44,10 +44,10 @@
                 {
                     CurrentPage = page,
                     TotalPages = totalPages,
-                    FeedBacks = feedbacks
+                    Answers = Answers
                 };
 
-                this.HttpContext.Cache["Feedback page_" + id] = viewModel;
+                this.HttpContext.Cache["Answer page_" + id] = viewModel;
             }
 
             return this.View(viewModel);

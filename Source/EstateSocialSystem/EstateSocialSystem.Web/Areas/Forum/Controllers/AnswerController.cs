@@ -30,7 +30,7 @@
                 return View(model);
             }
 
-            var feedback = new Answer()
+            var Answer = new Answer()
             {
                 Content = model.Content,
                 Title = model.Title
@@ -38,10 +38,10 @@
 
             if (this.User.Identity.IsAuthenticated)
             {
-                feedback.AuthorId = this.User.Identity.GetUserId();
+                Answer.AuthorId = this.User.Identity.GetUserId();
             }
 
-            this.answers.Add(feedback);
+            this.answers.Add(Answer);
             this.answers.SaveChanges();
 
             this.TempData["Notification"] = "Thank you for your answer!";

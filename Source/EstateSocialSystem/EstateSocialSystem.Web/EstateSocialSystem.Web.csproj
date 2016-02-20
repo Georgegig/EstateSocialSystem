@@ -291,10 +291,6 @@
     <Content Include="Areas\Forum\Views\PageableAnswerList\Index.cshtml" />
     <Content Include="Areas\Forum\Views\Questions\Ask.cshtml" />
     <Content Include="Areas\Forum\Views\Questions\Display.cshtml" />
-    <Content Include="Areas\Forum\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Forum\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Forum\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Forum\Views\Shared\_LoginPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -370,6 +366,7 @@
     <Folder Include="Areas\Blog\Controllers\" />
     <Folder Include="Areas\Blog\Models\" />
     <Folder Include="Areas\Blog\Views\Shared\" />
+    <Folder Include="Areas\Forum\Views\Shared\" />
     <Folder Include="Areas\Market\Controllers\" />
     <Folder Include="Areas\Market\Models\" />
     <Folder Include="Areas\Market\Views\Shared\" />

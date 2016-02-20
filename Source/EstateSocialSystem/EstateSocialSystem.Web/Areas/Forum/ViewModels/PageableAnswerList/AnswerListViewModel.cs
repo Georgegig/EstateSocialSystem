@@ -8,6 +8,6 @@
 
         public int TotalPages { get; set; }
 
-        public IEnumerable<AnswerViewModel> FeedBacks { get; set; }
+        public IEnumerable<AnswerViewModel> Answers { get; set; }
     }
 }

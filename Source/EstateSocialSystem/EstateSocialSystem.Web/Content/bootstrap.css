@@ -2780,13 +2780,13 @@ select[multiple].input-lg {
   font-size: 18px;
   line-height: 1.3333333;
 }
-.has-feedback {
+.has-Answer {
   position: relative;
 }
-.has-feedback .form-control {
+.has-Answer .form-control {
   padding-right: 42.5px;
 }
-.form-control-feedback {
+.form-control-Answer {
   position: absolute;
   top: 0;
   right: 0;
@@ -2798,16 +2798,16 @@ select[multiple].input-lg {
   text-align: center;
   pointer-events: none;
 }
-.input-lg + .form-control-feedback,
-.input-group-lg + .form-control-feedback,
-.form-group-lg .form-control + .form-control-feedback {
+.input-lg + .form-control-Answer,
+.input-group-lg + .form-control-Answer,
+.form-group-lg .form-control + .form-control-Answer {
   width: 46px;
   height: 46px;
   line-height: 46px;
 }
-.input-sm + .form-control-feedback,
-.input-group-sm + .form-control-feedback,
-.form-group-sm .form-control + .form-control-feedback {
+.input-sm + .form-control-Answer,
+.input-group-sm + .form-control-Answer,
+.form-group-sm .form-control + .form-control-Answer {
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -2839,7 +2839,7 @@ select[multiple].input-lg {
   background-color: #dff0d8;
   border-color: #3c763d;
 }
-.has-success .form-control-feedback {
+.has-success .form-control-Answer {
   color: #3c763d;
 }
 .has-warning .help-block,
@@ -2869,7 +2869,7 @@ select[multiple].input-lg {
   background-color: #fcf8e3;
   border-color: #8a6d3b;
 }
-.has-warning .form-control-feedback {
+.has-warning .form-control-Answer {
   color: #8a6d3b;
 }
 .has-error .help-block,
@@ -2899,13 +2899,13 @@ select[multiple].input-lg {
   background-color: #f2dede;
   border-color: #a94442;
 }
-.has-error .form-control-feedback {
+.has-error .form-control-Answer {
   color: #a94442;
 }
-.has-feedback label ~ .form-control-feedback {
+.has-Answer label ~ .form-control-Answer {
   top: 25px;
 }
-.has-feedback label.sr-only ~ .form-control-feedback {
+.has-Answer label.sr-only ~ .form-control-Answer {
   top: 0;
 }
 .help-block {
@@ -2960,7 +2960,7 @@ select[multiple].input-lg {
     position: relative;
     margin-left: 0;
   }
-  .form-inline .has-feedback .form-control-feedback {
+  .form-inline .has-Answer .form-control-Answer {
     top: 0;
   }
 }
@@ -2987,7 +2987,7 @@ select[multiple].input-lg {
     text-align: right;
   }
 }
-.form-horizontal .has-feedback .form-control-feedback {
+.form-horizontal .has-Answer .form-control-Answer {
   right: 15px;
 }
 @media (min-width: 768px) {
@@ -4424,7 +4424,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     position: relative;
     margin-left: 0;
   }
-  .navbar-form .has-feedback .form-control-feedback {
+  .navbar-form .has-Answer .form-control-Answer {
     top: 0;
   }
 }

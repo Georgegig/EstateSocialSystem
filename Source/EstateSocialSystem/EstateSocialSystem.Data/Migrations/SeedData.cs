@@ -90,13 +90,13 @@
             {
                 for (int i = 1; i <= 18; i++)
                 {
-                    var feedback = new Answer()
+                    var Answer = new Answer()
                     {
-                        Title = string.Format("Feedback {0}", i),
-                        Content = string.Format("Feedback <b>content></b> {0}", i)
+                        Title = string.Format("Answer {0}", i),
+                        Content = string.Format("Answer <b>content></b> {0}", i)
                     };
 
-                    context.Answers.Add(feedback);
+                    context.Answers.Add(Answer);
                 }
 
                 context.SaveChanges();

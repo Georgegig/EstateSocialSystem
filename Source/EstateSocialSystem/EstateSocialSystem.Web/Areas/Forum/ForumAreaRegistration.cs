@@ -15,6 +15,18 @@ namespace EstateSocialSystem.Web.Areas.Forum
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                "Get questions by tag",
+                "questions/tagged/{tag}",
+                new { controller = "Questions", action = "GetByTag" },
+                new[] { "EstateSocialSystem.Web.Areas.Forum.Controllers" });
+
+            context.MapRoute(
+                "Display question",
+                "questions/{id}/{url}",
+                new { controller = "Questions", action = "Display" },
+                new[] { "EstateSocialSystem.Web.Areas.Forum.Controllers" });
+
+            context.MapRoute(
                 "Forum_default",
                 "Forum/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },

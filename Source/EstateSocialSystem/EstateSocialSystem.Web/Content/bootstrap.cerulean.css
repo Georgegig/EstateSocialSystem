@@ -2513,13 +2513,13 @@ textarea.input-lg,
 select[multiple].input-lg {
   height: auto;
 }
-.has-feedback {
+.has-Answer {
   position: relative;
 }
-.has-feedback .form-control {
+.has-Answer .form-control {
   padding-right: 47.5px;
 }
-.form-control-feedback {
+.form-control-Answer {
   position: absolute;
   top: 25px;
   right: 0;
@@ -2530,12 +2530,12 @@ select[multiple].input-lg {
   line-height: 38px;
   text-align: center;
 }
-.input-lg + .form-control-feedback {
+.input-lg + .form-control-Answer {
   width: 54px;
   height: 54px;
   line-height: 54px;
 }
-.input-sm + .form-control-feedback {
+.input-sm + .form-control-Answer {
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -2563,7 +2563,7 @@ select[multiple].input-lg {
   border-color: #468847;
   background-color: #dff0d8;
 }
-.has-success .form-control-feedback {
+.has-success .form-control-Answer {
   color: #468847;
 }
 .has-warning .help-block,
@@ -2589,7 +2589,7 @@ select[multiple].input-lg {
   border-color: #c09853;
   background-color: #fcf8e3;
 }
-.has-warning .form-control-feedback {
+.has-warning .form-control-Answer {
   color: #c09853;
 }
 .has-error .help-block,
@@ -2615,10 +2615,10 @@ select[multiple].input-lg {
   border-color: #b94a48;
   background-color: #f2dede;
 }
-.has-error .form-control-feedback {
+.has-error .form-control-Answer {
   color: #b94a48;
 }
-.has-feedback label.sr-only ~ .form-control-feedback {
+.has-Answer label.sr-only ~ .form-control-Answer {
   top: 0;
 }
 .help-block {
@@ -2670,7 +2670,7 @@ select[multiple].input-lg {
     position: relative;
     margin-left: 0;
   }
-  .form-inline .has-feedback .form-control-feedback {
+  .form-inline .has-Answer .form-control-Answer {
     top: 0;
   }
 }
@@ -2697,7 +2697,7 @@ select[multiple].input-lg {
     padding-top: 9px;
   }
 }
-.form-horizontal .has-feedback .form-control-feedback {
+.form-horizontal .has-Answer .form-control-Answer {
   top: 0;
   right: 15px;
 }
@@ -4018,7 +4018,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     position: relative;
     margin-left: 0;
   }
-  .navbar-form .has-feedback .form-control-feedback {
+  .navbar-form .has-Answer .form-control-Answer {
     top: 0;
   }
 }
