@@ -17,7 +17,8 @@ namespace EstateSocialSystem.Web.Areas.Forum
             context.MapRoute(
                 "Forum_default",
                 "Forum/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "EstateSocialSystem.Web.Areas.Forum.Controllers" }
             );
         }
     }
