@@ -23,17 +23,18 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AnswerInputModel model)
+        public ActionResult Create(int postId, AnswerInputModel model)
         {
             if (!this.ModelState.IsValid)
             {
                 return View(model);
-            }
+            }            
 
             var Answer = new Answer()
             {
                 Content = model.Content,
-                Title = model.Title
+                Title = model.Title,
+                PostId = postId
             };
 
             if (this.User.Identity.IsAuthenticated)

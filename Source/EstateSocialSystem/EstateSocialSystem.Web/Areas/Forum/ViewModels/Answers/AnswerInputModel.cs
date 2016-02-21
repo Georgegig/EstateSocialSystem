@@ -13,5 +13,7 @@
         [AllowHtml]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
+
+        public int PostId { get; set; }
     }
 }

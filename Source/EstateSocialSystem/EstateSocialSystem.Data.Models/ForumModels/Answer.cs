@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Answer : AuditInfo, IDeletableEntity
     {
@@ -20,5 +21,10 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        [ForeignKey("Post")]
+        public int? PostId { get; set; }
+        
+        public virtual Post Post { get; set; }
     }
 }

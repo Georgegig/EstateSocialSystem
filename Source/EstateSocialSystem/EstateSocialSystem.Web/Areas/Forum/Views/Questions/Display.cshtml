@@ -1,16 +1,37 @@
 ﻿@model EstateSocialSystem.Web.Areas.Forum.ViewModels.QuestionDisplayViewModel
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = Model.Question.Title;
 }
 
 <h1>@ViewBag.Title</h1>
-<div class="row table-bordered">
+<div class="row">
     <div>
-        @Html.Raw(Model.Content)
+        @Html.Raw(Model.Question.Content)
     </div>
     <div class="col-md-12">
-        Asked by @Model.Author <span class="small">on @Model.CreatedOn</span>
+        Asked by @Model.Question.Author <span class="small">on @Model.Question.CreatedOn</span>
     </div>
     <div class="col-md-12 divider"></div>
+    @if (Model.Question.Answers.Any())
+    {
+        <div class="col-md-12">
+            <div class="row">
+                @foreach (var answer in Model.Question.Answers)
+                {
+                    <div class="col-md-12 table-bordered" style="margin-bottom:10px;">
+                        <p>
+                            @answer.Title
+                        </p>
+                        <p>
+                            @answer.Content
+                        </p>
+                        <span class="glyphicon glyphicon-arrow-right"></span><span class="small">Answer by @answer.Author.UserName on @answer.CreatedOn</span>
+                    </div>
+                }
+            </div>
+        </div>
+    }
 </div>
+
+@Html.Partial("Answer", Model.Answer);
 

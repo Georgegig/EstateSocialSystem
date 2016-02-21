@@ -25,14 +25,22 @@
         // /questions/26864653/mysql-workbench-crash-on-start-on-windows
         public ActionResult Display(int id, string url, int page = 1)
         {
-            var postViewModel = this.posts.All().Where(x => x.Id == id).To<QuestionDisplayViewModel>().FirstOrDefault();
+            var question = this.posts.All().Where(x => x.Id == id).To<QuestionViewModel>().FirstOrDefault();
 
-            if (postViewModel == null)
+            if (question == null)
             {
                 return this.HttpNotFound("No such post");
             }
+            var viewModel = new QuestionDisplayViewModel
+            {
+                Question = question,
+                Answer = new AnswerInputModel()
+                {
+                    PostId = question.Id
+                }
+            };
 
-            return this.View(postViewModel);
+            return this.View(viewModel);
         }
 
         // /questions/tagged/javascript

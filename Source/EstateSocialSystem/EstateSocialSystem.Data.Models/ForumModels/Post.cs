@@ -11,6 +11,7 @@
         {
             this.Tags = new HashSet<Tag>();
             this.Votes = new HashSet<PostVote>();
+            this.Answers = new HashSet<Answer>();
         }
 
         public int Id { get; set; }
@@ -31,5 +32,7 @@
         public virtual ICollection<Tag> Tags { get; set; }
 
         public virtual ICollection<PostVote> Votes { get; set; }
+
+        public virtual ICollection<Answer> Answers { get; set; }
     }
 }

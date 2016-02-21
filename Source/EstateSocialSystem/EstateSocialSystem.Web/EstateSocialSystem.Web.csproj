@@ -226,6 +226,7 @@
     <Compile Include="Areas\Forum\ViewModels\PageableAnswerList\AnswerListViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\PageableAnswerList\AnswerViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\Questions\QuestionDisplayViewModel.cs" />
+    <Compile Include="Areas\Forum\ViewModels\Questions\QuestionViewModel.cs" />
     <Compile Include="Areas\Market\MarketAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplianceController.cs" />
@@ -366,6 +367,7 @@
     <Content Include="Content\KendoUi\fonts\glyphs\KendoUIGlyphs.woff" />
     <Content Include="Content\KendoUi\images\kendoui.ttf" />
     <Content Include="Content\KendoUi\images\kendoui.woff" />
+    <Content Include="Areas\Forum\Views\Questions\Answer.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
