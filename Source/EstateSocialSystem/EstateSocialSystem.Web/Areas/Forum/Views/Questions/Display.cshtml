@@ -4,5 +4,13 @@
 }
 
 <h1>@ViewBag.Title</h1>
-@Html.Raw(Model.Content)
+<div class="row table-bordered">
+    <div>
+        @Html.Raw(Model.Content)
+    </div>
+    <div class="col-md-12">
+        Asked by @Model.Author <span class="small">on @Model.CreatedOn</span>
+    </div>
+    <div class="col-md-12 divider"></div>
+</div>
 
