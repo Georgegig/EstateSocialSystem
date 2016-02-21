@@ -12,8 +12,20 @@ namespace EstateSocialSystem.Web.Areas.Forum
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
+            context.MapRoute(
+                   "ForumHome",
+                   "Forum/Home",
+                   new { controller = "Home", action = "Index" },
+                   new[] { "EstateSocialSystem.Web.Controllers" });
+
+            context.MapRoute(
+                "ForumLogOff",
+                "Forum/Account/LogOff",
+                new { controller = "Account", action = "LogOff" },
+                new[] { "EstateSocialSystem.Web.Controllers" });
+
             context.MapRoute(
                 "Get questions by tag",
                 "questions/tagged/{tag}",

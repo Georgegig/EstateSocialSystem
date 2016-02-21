@@ -6,11 +6,11 @@
     using Infrastructure.Mapping;
     using ViewModels;
 
-    public class HomeController : Controller
+    public class ForumIndexController : Controller
     {
         private readonly IDeletableEntityRepository<Post> posts;
 
-        public HomeController(IDeletableEntityRepository<Post> posts)
+        public ForumIndexController(IDeletableEntityRepository<Post> posts)
         {
             this.posts = posts;
         }
