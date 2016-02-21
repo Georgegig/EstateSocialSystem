@@ -14,6 +14,7 @@
         {
         }
 
+        ////SOCIAL SYSTEM
         public IDbSet<Estate> Estates { get; set; }
 
         public IDbSet<Appliance> Appliances { get; set; }
@@ -28,11 +29,26 @@
 
         public IDbSet<ApplianceRating> ApplianceRating { get; set; }
 
+
+        //// FORUM SYSTEM
         public IDbSet<Tag> Tags { get; set; }
 
         public IDbSet<Post> Posts { get; set; }
 
         public IDbSet<Answer> Answers { get; set; }
+
+        //// BLOG SYSTEM
+        public IDbSet<BlogPost> BlogPosts { get; set; }
+
+        public IDbSet<Page> Pages { get; set; }
+
+        public IDbSet<BlogTag> BlogTags { get; set; }
+
+        public IDbSet<PostComment> PostComments { get; set; }
+
+        public IDbSet<Setting> Settings { get; set; }
+
+        public IDbSet<Video> Videos { get; set; }
 
         public static EstateSocialSystemDbContext Create()
         {

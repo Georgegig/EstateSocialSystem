@@ -23,6 +23,9 @@
         //// FORUM SYSTEM
         private ICollection<Post> posts;
 
+        //// BLOG SYSTEM
+        private ICollection<PostComment> blogComments;
+
         public User()
         {
             //// SOCIAL SYSTEM
@@ -35,6 +38,9 @@
 
             ////FORUM SYSTEM
             this.posts = new HashSet<Post>();
+
+            //// BLOG SYSTEM
+            this.blogComments = new HashSet<PostComment>();
         }
 
         [Required]
@@ -83,6 +89,9 @@
 
         ////FORUM SYSTEM
         public virtual ICollection<Post> Posts { get { return this.posts; } set { this.posts = value; } }
+
+        ////BLOG SYSTEM
+        public virtual ICollection<PostComment> BlogComments { get { return this.blogComments; } set { this.blogComments = value; } }
 
     }
 }

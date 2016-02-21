@@ -209,6 +209,7 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
+    <Compile Include="Areas\Blog\Controllers\BlogController.cs" />
     <Compile Include="Areas\Forum\ForumAreaRegistration.cs" />
     <Compile Include="Areas\Forum\Controllers\AnswerController.cs" />
     <Compile Include="Areas\Forum\Controllers\ForumIndexController.cs" />
@@ -363,8 +364,8 @@
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Administration\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Blog\Controllers\" />
     <Folder Include="Areas\Blog\Models\" />
+    <Folder Include="Areas\Blog\Views\Blog\" />
     <Folder Include="Areas\Blog\Views\Shared\" />
     <Folder Include="Areas\Forum\Views\Shared\" />
     <Folder Include="Areas\Market\Controllers\" />

@@ -57,6 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogModels\BlogPost.cs" />
+    <Compile Include="BlogModels\BlogPostType.cs" />
+    <Compile Include="BlogModels\BlogTag.cs" />
+    <Compile Include="BlogModels\ContentHolder.cs" />
+    <Compile Include="BlogModels\Page.cs" />
+    <Compile Include="BlogModels\PostComment.cs" />
+    <Compile Include="BlogModels\Setting.cs" />
+    <Compile Include="BlogModels\Video.cs" />
+    <Compile Include="BlogModels\VideoProvider.cs" />
     <Compile Include="ForumModels\Answer.cs" />
     <Compile Include="ForumModels\PostVote.cs" />
     <Compile Include="ForumModels\VoteType.cs" />
