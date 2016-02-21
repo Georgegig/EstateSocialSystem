@@ -23,9 +23,17 @@ namespace EstateSocialSystem.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                      "~/Scripts/KendoUi/kendo.all.min.js",
+                      "~/Scripts/KendoUi/kendo.aspnetmvc.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.cerulean.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo").Include(
+                      "~/Content/KendoUi/kendo.common.min.css",
+                      "~/Content/KendoUi/kendo.default.min.css"));
         }
     }
 }

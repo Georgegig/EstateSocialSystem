@@ -7,6 +7,9 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
+            @Html.ActionLink("Administer Estates", "Index", "Estate",  new { area = "Administration" }, null)
+        </li>
+        <li>
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="forumDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                         style="margin-top:8px;">
@@ -30,12 +33,12 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="estateDropDown">
-                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Estate", new { area = "" }, null)</li>
                     <li class="divider"></li>
                     @if (User.IsInRole("Regular"))
                     {
-                        <li class="text-center">@Html.ActionLink("Create", "Create", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
-                        <li class="text-center">@Html.ActionLink("View Personal Estates", "Personal", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                        <li class="text-center">@Html.ActionLink("Create", "Create", "Estate", new { area = "" }, null)</li>
+                        <li class="text-center">@Html.ActionLink("View Personal Estates", "Personal", "Estate", new { area = "" }, null)</li>
                     }
                 </ul>
             </div>
@@ -48,18 +51,18 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
-                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Appliance", new { area = "" }, null)</li>
                     <li class="divider"></li>
                     @if (User.IsInRole("Manufacturer"))
                     {
-                        <li>@Html.ActionLink("Create", "Create", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
-                        <li class="text-center">@Html.ActionLink("View Personal Appliances", "Personal", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                        <li>@Html.ActionLink("Create", "Create", "Appliance", new { area = "" }, null)</li>
+                        <li class="text-center">@Html.ActionLink("View Personal Appliances", "Personal", "Appliance", new { area = "" }, null)</li>
                     }
                 </ul>
             </div>
         </li>
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "UserProfile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "UserProfile", "Account", new { area = "" }, null)
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
@@ -107,7 +110,7 @@ else
                 </ul>
             </div>
         </li>
-        <li>@Html.ActionLink("Register", "RegisterOptions", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Register", "RegisterOptions", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

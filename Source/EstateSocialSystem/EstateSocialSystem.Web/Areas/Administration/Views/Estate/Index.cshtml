@@ -1,0 +1,35 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<EstateSocialSystem.Data.Models.Estate>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Name);
+        columns.Bound(c => c.Address);
+        columns.Bound(c => c.Size);
+        columns.Bound(c => c.IsDeleted);
+        columns.Bound(c => c.DeletedOn);
+        columns.Bound(c => c.CreatedOn);
+        columns.Bound(c => c.ModifiedOn);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+            toolbar.Excel();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Estates_Read", "Estate"))
+          .Create(create => create.Action("Estates_Create", "Estate"))
+          .Update(update => update.Action("Estates_Update", "Estate"))
+          .Destroy(destroy => destroy.Action("Estates_Destroy", "Estate"))
+      )
+)
