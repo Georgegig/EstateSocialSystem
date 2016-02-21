@@ -2,44 +2,78 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="jumbotron text-center">
     <h1>Estate Social System</h1>
     <p class="lead">Create an account and register your estates.</p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        @if (User.Identity.IsAuthenticated)
-        {
-            <h2>Estates</h2>
-            <div>
-                <dl class="dl-horizontal">
+    <div class="col-md-6 text-center table-bordered">
+        <h2>Top 15 Estates</h2>
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach (var estate in ViewBag.Estates)
                     {
-                        <dt>
-                            Estate Name
-                        </dt>
-                        <dd>
-                            <a href="/Estate/Display/@estate.Id">@estate.Name</a>
-                        </dd>
-                        <dt>
-                            Estate Ratings
-                        </dt>
-                        <dd>
-                            @estate.Ratings.Count
-                        </dd>
+                        <tr>
+                            <td class="text-center">
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a href="/Estate/Display/@estate.Id">@estate.Name</a>
+                                }
+                                else
+                                {
+                                    @estate.Name
+                                }
+                            </td>
+                            <td>
+                                @estate.Ratings.Count
+                            </td>
+                        </tr>
                     }
-                </dl>
-            </div>
-            <h2>Appliances</h2>
-            <div>
-                @foreach (var appliance in ViewBag.Appliances)
-                {
-                    <div>
-                        <a href="/Appliance/Display/@appliance.Id">@appliance.Name</a>
-                    </div>
-                }
-            </div>
-        }
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6 table-bordered text-center">
+        <h2>Top 15 Appliances</h2>
+        <div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center"> Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var appliance in ViewBag.Appliances)
+                    {
+                        <tr>
+                            <td class="text-center">
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a href="/Estate/Display/@appliance.Id">@appliance.Name</a>
+                                }
+                                else
+                                {
+                                    @appliance.Name
+                                }
+                            </td>
+                            <td class="text-center">@appliance.Ratings.Count</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
     </div>
 </div>

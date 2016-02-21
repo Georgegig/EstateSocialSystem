@@ -1,89 +1,120 @@
 ﻿@{ 
     ViewBag.Title = "Display";
 }
-
-<h2>Display</h2>
-<h2>Estate Characteristics</h2>
-@if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
-{    
-    <a href="/Estate/Update/@ViewBag.EstateViewModel.Id">
-        <div class="btn btn-warning">Update</div>
-    </a>
-    <a href="/Estate/Delete/@ViewBag.EstateViewModel.Id">
-        <div class="btn btn-danger">Delete</div>
-    </a>
-}
 <div class="row">
     <div class="col-md-12 text-center">
-        <h1>@ViewBag.EstateViewModel.Name</h1>
+        <h1>Estate @ViewBag.EstateViewModel.Name</h1>
     </div>
-    <div class="col-md-12 text-center">
-        <h4>@ViewBag.EstateViewModel.Address</h4>
-    </div>
-    <div class="col-md-12 text-center">
-        <h4>@ViewBag.EstateViewModel.Size</h4>
-    </div>
-    <div class="col-md-12">
+</div>
+<div class="row">
+    <div class="col-md-8">
         <div class="row">
-            @foreach (var comment in ViewBag.EstateViewModel.Comments)
-            {
-                <div class="col-md-12 text-center">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h6>@comment.Author.UserName said:</h6>
-                        </div>
-                        <div class="panel-body">
-                            @comment.Content
-                        </div>
-                        <div class="panel-footer">
-                            <span class="small">Created on @comment.CreatedOn</span>
-                        </div>
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><h4>Address</h4></th>
+                            <th class="text-center"><h4>Size</h4></th>
+                            @if (ViewBag.EstateAverageRating != 0)
+                            {
+                                <th class="text-center"><h4>Rating</h4></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <h4>@ViewBag.EstateViewModel.Address</h4>
+                            </td>
+                            <td class="text-center">
+                                <h4>@ViewBag.EstateViewModel.Size</h4>
+                            </td>
+                            @if (ViewBag.EstateAverageRating != 0)
+                            {
+                                <td class="text-center">
+                                    <h4>@ViewBag.EstateAverageRating</h4>
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Comments</h4>
                     </div>
+                    @foreach (var comment in ViewBag.EstateViewModel.Comments)
+                    {
+                        <div class="col-md-12" style="margin-bottom:20px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>@comment.Content
+                                </div>
+                                <div class="col-md-12 small">
+                                    by @comment.Author.UserName on @comment.CreatedOn
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
-            }
+            </div>
         </div>
     </div>
-    @if (ViewBag.EstateAverageRating != 0)
+    @if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
     {
-        <div class="col-md-12">
-            <h3>Rating</h3>
-            <h4>@ViewBag.EstateAverageRating</h4>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12" style="margin-bottom:20px;">
+                    <a href="/Estate/Update/@ViewBag.EstateViewModel.Id">
+                        <div class="btn btn-warning">Update</div>
+                    </a>
+                    <a href="/Estate/Delete/@ViewBag.EstateViewModel.Id">
+                        <div class="btn btn-danger">Delete</div>
+                    </a>
+                </div>
+                <div class="col-md-12 table-bordered" style="margin-bottom:20px;">
+                    <select form="formAppliance" name="applianceId">
+                        @foreach (var appliance in ViewBag.AllAppliances)
+                        {
+                            <option value="@appliance.Id">@appliance.Name</option>
+                        }
+                    </select>
+                    <br />
+                    <form action="/Appliance/AddToEstate/@ViewBag.EstateViewModel.Id" method="post" id="formAppliance">
+                        <br />
+                        <input type="submit" value="Add Appliance" />
+                    </form>
+                </div>
+                <div class="col-md-12" style="margin-bottom:20px;">
+                    <a href="/Appliance/Create" class="btn btn-default">Create Custom Appliance</a>
+                </div>
+                <div class="col-md-12 table-bordered" style="margin-bottom:20px;">
+                    <form action="/Comment/CreateEstateComment/@ViewBag.EstateViewModel.Id" method="post">
+                        <label for="content">Content</label>
+                        <textarea id="content" name="content"></textarea>
+                        <br />
+                        <input type="submit" value="Comment" />
+                    </form>
+                </div>
+                <div class="col-md-12 table-bordered" style="margin-bottom:20px;">
+                    <select form="formRate" name="rate">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <br />
+                    <form action="/Rating/AddEstateRating/@ViewBag.EstateViewModel.Id" method="post" id="formRate">
+                        <input type="submit" value="Rate" />
+                    </form>
+                </div>
+            </div>
         </div>
     }
 </div>
-<form action="/Comment/CreateEstateComment/@ViewBag.EstateViewModel.Id" method="post">
-    <label for="content">Content</label>
-    <textarea id="content" name="content"></textarea>
-    <input type="submit" value="Comment"/>
-</form>
-<br />
-<select form="formRate" name="rate">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-</select>
-<form action="/Rating/AddEstateRating/@ViewBag.EstateViewModel.Id" method="post" id="formRate">
-    <input type="submit" value="Rate" />
-</form>
-<br />
-@if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
-{
-    <select form="formAppliance" name="applianceId">
-        @foreach (var appliance in ViewBag.AllAppliances)
-        {
-            <option value="@appliance.Id">@appliance.Name</option>
-        }
-    </select>
-    <br />
-    <form action="/Appliance/AddToEstate/@ViewBag.EstateViewModel.Id" method="post" id="formAppliance">
-        <br />
-        <input type="submit" value="Add Appliance" />
-    </form>
-    <br />
-    <a href="/Appliance/Create" class="btn btn-default">Create Custom Appliance</a>
-}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
