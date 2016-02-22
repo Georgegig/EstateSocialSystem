@@ -232,6 +232,7 @@
     <Compile Include="Controllers\ApplianceController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EstateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -271,6 +272,7 @@
     <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\error404.css" />
     <Content Include="Content\KendoUi\Default\editor.png" />
     <Content Include="Content\KendoUi\Default\imagebrowser.png" />
     <Content Include="Content\KendoUi\Default\indeterminate.gif" />
@@ -436,6 +438,8 @@
     <Content Include="Views\Appliance\ViewAll.cshtml" />
     <Content Include="Views\Appliance\Personal.cshtml" />
     <Content Include="Views\Appliance\Update.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Unknown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />

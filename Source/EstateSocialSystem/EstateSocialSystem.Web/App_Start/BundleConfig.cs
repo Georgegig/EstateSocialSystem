@@ -31,6 +31,9 @@ namespace EstateSocialSystem.Web
                       "~/Content/bootstrap.cerulean.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/error").Include(
+                      "~/Content/error404.css"));
+
             bundles.Add(new StyleBundle("~/Content/kendo").Include(
                       "~/Content/KendoUi/kendo.common.min.css",
                       "~/Content/KendoUi/kendo.default.min.css"));
