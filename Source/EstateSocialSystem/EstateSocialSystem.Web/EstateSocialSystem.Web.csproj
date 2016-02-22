@@ -213,8 +213,10 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\ApplianceController.cs" />
     <Compile Include="Areas\Administration\Controllers\EstateController.cs" />
+    <Compile Include="Areas\Administration\Controllers\PostController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AdministerApplianceViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\AdministerEstateViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\AdministerPostViewModel.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
     <Compile Include="Areas\Forum\ForumAreaRegistration.cs" />
     <Compile Include="Areas\Forum\Controllers\AnswerController.cs" />
@@ -374,6 +376,7 @@
     <Content Include="Content\KendoUi\images\kendoui.woff" />
     <Content Include="Areas\Forum\Views\Questions\Answer.cshtml" />
     <Content Include="Areas\Administration\Views\Appliance\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Post\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -446,8 +449,10 @@
     <Content Include="Views\Error\Unknown.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdministerEstateViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdministerApplianceViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AdministerPostViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Administration\Views\AdministerPosts\" />
     <Folder Include="Areas\Administration\Views\Administration\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Blog\Controllers\" />
@@ -458,6 +463,7 @@
     <Folder Include="Areas\Market\Models\" />
     <Folder Include="Areas\Market\Views\Shared\" />
     <Folder Include="Views\Comment\" />
+    <Folder Include="Views\Post\" />
     <Folder Include="Views\Rating\" />
   </ItemGroup>
   <ItemGroup>

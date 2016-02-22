@@ -27,7 +27,9 @@
 
         public ActionResult Estates_Read([DataSourceRequest]DataSourceRequest request)
         {
-            DataSourceResult result = this.estates.All().To<AdministerEstateViewModel>()
+            DataSourceResult result = this.estates.
+                All()
+                .To<AdministerEstateViewModel>()
                 .ToDataSourceResult(request);
 
             return Json(result);

@@ -90,6 +90,9 @@ else if (Request.IsAuthenticated && User.IsInRole("Administrator"))
                         <li>
                             @Html.ActionLink("Administer Appliances", "Index", "Appliance", new { area = "Administration" }, null)
                         </li>
+                        <li>
+                            @Html.ActionLink("Administer Posts", "Index", "Post", new { area = "Administration" }, null)
+                        </li>
                     </ul>
                 </div>
             </li>            
