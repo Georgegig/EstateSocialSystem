@@ -1,37 +1,39 @@
 ﻿@using Kendo.Mvc.UI
-@(Html.Kendo().Grid<EstateSocialSystem.Web.Areas.Administration.ViewModels.AdministerEstateViewModel>()
+@(Html.Kendo().Grid<EstateSocialSystem.Web.Areas.Administration.ViewModels.AdministerApplianceViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
           columns.Bound(c => c.Id);
+          columns.Bound(c => c.Manufacturer);
           columns.Bound(c => c.Name);
-          columns.Bound(c => c.Address);
-          columns.Bound(c => c.AuthorName);
-          columns.Bound(c => c.Size);
-          columns.Bound(c => c.IsDeleted);
+          columns.Bound(c => c.Type);
+          columns.Bound(c => c.Power);
+          columns.Bound(c => c.Input);
+          columns.Bound(c => c.Output);
           columns.Bound(c => c.DeletedOn).Format("{0:yyyy-MM-dd HH:mm}");
+          columns.Bound(c => c.IsDeleted);
           columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
           columns.Bound(c => c.ModifiedOn).Format("{0:yyyy-MM-dd HH:mm}");
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
       .ToolBar(toolbar => {
           toolbar.Create();
-          toolbar.Excel();
       })
       .ColumnMenu()
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
       .Pageable()
+      .Navigatable()
       .Sortable(sortable => {
           sortable.SortMode(GridSortMode.SingleColumn);
       })
-      .Filterable()
+      .Filterable(filterable => filterable.Mode(GridFilterMode.Row))
       .Scrollable()
       .DataSource(dataSource => dataSource
           .Ajax()
           .Model(model => model.Id(p => p.Id))
-          .Read(read => read.Action("Estates_Read", "Estate"))
-          .Create(create => create.Action("Estates_Create", "Estate"))
-          .Update(update => update.Action("Estates_Update", "Estate"))
-          .Destroy(destroy => destroy.Action("Estates_Destroy", "Estate"))
+          .Read(read => read.Action("Appliances_Read", "Appliance"))
+          .Create(create => create.Action("Appliances_Create", "Appliance"))
+          .Update(update => update.Action("Appliances_Update", "Appliance"))
+          .Destroy(destroy => destroy.Action("Appliances_Destroy", "Appliance"))
       )
 )

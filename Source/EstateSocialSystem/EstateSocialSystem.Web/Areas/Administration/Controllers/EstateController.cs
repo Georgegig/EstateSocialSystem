@@ -6,6 +6,10 @@
     using Kendo.Mvc.UI;
     using Data.Models;
     using Data.Common.Repository;
+    using ViewModels;
+    using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
+    using System.Linq;
 
     public class EstateController : Controller
     {
@@ -23,23 +27,16 @@
 
         public ActionResult Estates_Read([DataSourceRequest]DataSourceRequest request)
         {
-            DataSourceResult result = this.estates.All().ToDataSourceResult(request, estate => new {
-                Id = estate.Id,
-                Name = estate.Name,
-                Address = estate.Address,
-                Size = estate.Size,
-                IsDeleted = estate.IsDeleted,
-                DeletedOn = estate.DeletedOn,
-                CreatedOn = estate.CreatedOn,
-                ModifiedOn = estate.ModifiedOn
-            });
+            DataSourceResult result = this.estates.All().To<AdministerEstateViewModel>()
+                .ToDataSourceResult(request);
 
             return Json(result);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Estates_Create([DataSourceRequest]DataSourceRequest request, Estate estate)
+        public ActionResult Estates_Create([DataSourceRequest]DataSourceRequest request, AdministerEstateViewModel estate)
         {
+            var newId = 0;
             if (ModelState.IsValid)
             {
                 var entity = new Estate
@@ -47,42 +44,38 @@
                     Name = estate.Name,
                     Address = estate.Address,
                     Size = estate.Size,
-                    IsDeleted = estate.IsDeleted,
-                    DeletedOn = estate.DeletedOn,
-                    CreatedOn = estate.CreatedOn,
-                    ModifiedOn = estate.ModifiedOn
+                    AuthorId = this.User.Identity.GetUserId()
                 };
                 
                 this.estates.Add(entity);
                 this.estates.SaveChanges();
-                estate.Id = entity.Id;
+                newId = entity.Id;
             }
-
-            return Json(new[] { estate }.ToDataSourceResult(request, ModelState));
+            var estateToDisplay = this.estates
+                .All()
+                .To<AdministerEstateViewModel>()
+                .FirstOrDefault(x => x.Id == newId);
+            return Json(new[] { estateToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Estates_Update([DataSourceRequest]DataSourceRequest request, Estate estate)
+        public ActionResult Estates_Update([DataSourceRequest]DataSourceRequest request, AdministerEstateViewModel estate)
         {
             if (ModelState.IsValid)
             {
-                var entity = new Estate
-                {
-                    Id = estate.Id,
-                    Name = estate.Name,
-                    Address = estate.Address,
-                    Size = estate.Size,
-                    IsDeleted = estate.IsDeleted,
-                    DeletedOn = estate.DeletedOn,
-                    CreatedOn = estate.CreatedOn,
-                    ModifiedOn = estate.ModifiedOn
-                };
-
-                this.estates.Update(entity);
+                var entity = this.estates.GetById(estate.Id);
+                entity.Name = estate.Name;
+                entity.Address = estate.Address;
+                entity.Size = estate.Size;
                 this.estates.SaveChanges();
             }
 
-            return Json(new[] { estate }.ToDataSourceResult(request, ModelState));
+            var estateToDisplay = this.estates
+                .All()
+                .To<AdministerEstateViewModel>()
+                .FirstOrDefault(x => x.Id == estate.Id);
+
+            return Json(new[] { estateToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

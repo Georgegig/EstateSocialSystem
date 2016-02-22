@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated && !(User.IsInRole("Administrator")))
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
@@ -66,6 +66,38 @@
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
+    }
+}
+else if (Request.IsAuthenticated && User.IsInRole("Administrator"))
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            
+            <li>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="administrationDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                            style="margin-top:8px;">
+                        Administration
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="administrationDropDown">
+                        <li>
+                            @Html.ActionLink("Administer Estates", "Index", "Estate", new { area = "Administration" }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Administer Appliances", "Index", "Appliance", new { area = "Administration" }, null)
+                        </li>
+                    </ul>
+                </div>
+            </li>            
+            <li>
+                @Html.ActionLink("Administrator " + User.Identity.GetUserName() + "!", "UserProfile", "Account", new { area = "" }, null)
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else

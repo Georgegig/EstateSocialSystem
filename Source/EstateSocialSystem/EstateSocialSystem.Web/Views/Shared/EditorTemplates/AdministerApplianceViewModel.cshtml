@@ -1,0 +1,35 @@
+﻿@model EstateSocialSystem.Web.Areas.Administration.ViewModels.AdministerApplianceViewModel
+
+<h2>AdministerApplianceViewModel</h2>
+@Html.ValidationSummary("", new { @class = "text-danger" })
+<div class="form-group">
+    @Html.LabelFor(e => e.Name, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(e => e.Name, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(e => e.Type, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(e => e.Type, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(e => e.Power, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(e => e.Power, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(e => e.Input, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(e => e.Input, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(e => e.Output, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(e => e.Output, new { @class = "form-control" })
+    </div>
+</div>
+
