@@ -34,7 +34,7 @@ namespace EstateSocialSystem.Web.Areas.Forum
 
             context.MapRoute(
                 "Display question",
-                "questions/{id}/{url}",
+                "questions/{id}",
                 new { controller = "Questions", action = "Display" },
                 new[] { "EstateSocialSystem.Web.Areas.Forum.Controllers" });
 

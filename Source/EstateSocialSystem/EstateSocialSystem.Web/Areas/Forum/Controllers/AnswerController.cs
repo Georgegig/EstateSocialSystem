@@ -46,7 +46,7 @@
             this.answers.SaveChanges();
 
             this.TempData["Notification"] = "Thank you for your answer!";
-            return this.Redirect("/");
+            return this.Redirect(string.Format("/questions/{0}", postId));
         }
     }
 }

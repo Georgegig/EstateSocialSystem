@@ -32,6 +32,8 @@
         </div>
     }
 </div>
-
-@Html.Partial("Answer", Model.Answer);
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Partial("Answer", Model.Answer);
+}
 

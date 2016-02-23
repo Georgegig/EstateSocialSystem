@@ -15,6 +15,8 @@
 
         public int VotesCount { get; set; }
 
+        public int AnswersCount { get; set; }
+
         public IEnumerable<IndexBlogPostTagViewModel> Tags { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -25,7 +27,7 @@
         {
             get
             {
-                return string.Format("/questions/{0}/{1}", this.Id, this.Title.ToLower().Replace(" ", "-"));
+                return string.Format("/questions/{0}", this.Id);
             }
         }
 
@@ -34,6 +36,10 @@
             configuration.CreateMap<Post, IndexBlogPostViewModel>()
                 .ForMember(x => x.VotesCount,
                 opt => opt.MapFrom(x => x.Votes.Any() ? x.Votes.Sum(v => (int)v.Type) : 0));
+
+            configuration.CreateMap<Post, IndexBlogPostViewModel>()
+                .ForMember(x => x.AnswersCount,
+                opt => opt.MapFrom(x => x.Answers.Any() ? x.Answers.Count : 0));
         }
     }
 }
