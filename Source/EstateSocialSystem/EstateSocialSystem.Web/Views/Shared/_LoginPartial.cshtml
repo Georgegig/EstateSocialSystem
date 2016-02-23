@@ -7,9 +7,6 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Administer Estates", "Index", "Estate",  new { area = "Administration" }, null)
-        </li>
-        <li>
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="forumDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                         style="margin-top:8px;">
@@ -74,8 +71,7 @@ else if (Request.IsAuthenticated && User.IsInRole("Administrator"))
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            
+        <ul class="nav navbar-nav navbar-right">            
             <li>
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="administrationDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"

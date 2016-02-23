@@ -255,6 +255,7 @@
     <Compile Include="ViewModels\Appliances\ApplianceViewModel.cs" />
     <Compile Include="ViewModels\Appliances\UpdateApplianceViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentCreateViewModel.cs" />
+    <Compile Include="ViewModels\Comments\EstateCommentDisplayViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstateDisplayViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstatePersonalListViewModel.cs" />
     <Compile Include="ViewModels\Estates\EstatePersonalViewModel.cs" />

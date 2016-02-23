@@ -9,9 +9,13 @@
     using ViewModels;
     using InputModels;
     using Microsoft.AspNet.Identity;
+    using Services.Data.Contracts;
+    using System;
 
     public class QuestionsController : Controller
     {
+        const int ItemsPerPage = 5;
+
         private readonly IDeletableEntityRepository<Post> posts;
 
         private readonly ISanitizer sanitizer;
@@ -22,10 +26,14 @@
             this.sanitizer = sanitizer;
         }
 
-        // /questions/26864653/mysql-workbench-crash-on-start-on-windows
+        // /questions/26864653
         public ActionResult Display(int id, string url, int page = 1)
         {
-            var question = this.posts.All().Where(x => x.Id == id).To<QuestionViewModel>().FirstOrDefault();
+            var question = this.posts
+                .All()
+                .Where(x => x.Id == id)
+                .To<QuestionViewModel>()
+                .FirstOrDefault();
 
             if (question == null)
             {

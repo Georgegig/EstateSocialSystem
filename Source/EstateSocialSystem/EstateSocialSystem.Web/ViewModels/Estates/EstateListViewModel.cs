@@ -1,5 +1,6 @@
 ﻿namespace EstateSocialSystem.Web.Models
 {
+    using ViewModels;
     using System.Collections.Generic;
 
     public class EstateListViewModel 

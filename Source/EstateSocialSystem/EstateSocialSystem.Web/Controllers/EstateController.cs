@@ -10,10 +10,12 @@
     using System.Linq;
     using Services.Web;
     using System.Collections.Generic;
+    using ViewModels;
 
     public class EstateController : Controller
     {
-        const int ItemsPerPage = 10;
+        const int EstatesPerPage = 10;
+        const int CommentsPerPage = 5;
         private readonly IEstateService estates;
         private readonly IApplianceService appliances;
 
@@ -55,14 +57,35 @@
         }
 
         // GET: Estate Display by ID
-        public ActionResult Display(int id = 1)
+        public ActionResult Display(int page = 1, int id = 1)
         {            
             var estateById = this.estates.GetById(id);
-            var estateViewModel = AutoMapperConfig.Configuration.CreateMapper().Map<EstateDisplayViewModel>(estateById);
+            var estateViewModel = AutoMapperConfig
+                .Configuration.CreateMapper()
+                .Map<EstateDisplayViewModel>(estateById);
             var allAppliances = this.appliances.GetAll();
             var estateRatingSum = 0;
             var count = 0;
             int estateAverageRating = 0;
+
+            if (estateViewModel.Comments.Count() != 0)
+            {
+                var allCommentsCount = estateViewModel.Comments.Count();
+                var totalPages = Math.Ceiling(allCommentsCount / (decimal)CommentsPerPage);
+                var itemsToSkip = (page - 1) * CommentsPerPage;
+                var comments = estateViewModel
+                    .Comments
+                    .AsQueryable()
+                    .To<EstateCommentDisplayViewModel>()
+                    .ToList()
+                    .OrderByDescending(x => x.CreatedOn)
+                    .Skip(itemsToSkip)
+                    .Take(EstatesPerPage);
+
+                ViewBag.CurrentPageComments = comments;
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = (int)totalPages;
+            }
 
             foreach (var rating in estateViewModel.Ratings)
             {
@@ -88,8 +111,8 @@
         {
             var page = id;
             var allItemsCount = this.estates.GetAll().Count();
-            var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
-            var itemsToSkip = (page - 1) * ItemsPerPage;
+            var totalPages = Math.Ceiling(allItemsCount / (decimal)EstatesPerPage);
+            var itemsToSkip = (page - 1) * EstatesPerPage;
 
             var estates = this.estates
                 .GetAll()
@@ -97,7 +120,7 @@
                 .ToList()
                 .OrderByDescending(x => x, new EstateSorterService(sortBy))
                 .Skip(itemsToSkip)
-                .Take(ItemsPerPage);
+                .Take(EstatesPerPage);
             
             var viewModel = new EstateListViewModel
             {
@@ -117,15 +140,15 @@
             var page = id;
             var currentUserId = User.Identity.GetUserId();
             var allItemsCount = this.estates.GetAll().Where(x => x.AuthorId == currentUserId).Count();
-            var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
-            var itemsToSkip = (page - 1) * ItemsPerPage;
+            var totalPages = Math.Ceiling(allItemsCount / (decimal)EstatesPerPage);
+            var itemsToSkip = (page - 1) * EstatesPerPage;
             var estates = this.estates
                 .GetAll()
                 .Where(x => x.AuthorId == currentUserId)
                 .OrderBy(x => x.CreatedOn)
                 .ThenBy(x => x.Id)
                 .Skip(itemsToSkip)
-                .Take(ItemsPerPage)
+                .Take(EstatesPerPage)
                 .To<EstatePersonalViewModel>()
                 .ToList();
 
