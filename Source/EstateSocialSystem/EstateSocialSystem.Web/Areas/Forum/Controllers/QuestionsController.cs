@@ -9,15 +9,13 @@
     using ViewModels;
     using InputModels;
     using Microsoft.AspNet.Identity;
-    using Services.Data.Contracts;
     using System;
 
     public class QuestionsController : Controller
     {
-        const int ItemsPerPage = 5;
-
+        const int PostsPerPage = 5;
+        const int AnswersPerPage = 5;
         private readonly IDeletableEntityRepository<Post> posts;
-
         private readonly ISanitizer sanitizer;
 
         public QuestionsController(IDeletableEntityRepository<Post> posts, ISanitizer sanitizer)
@@ -29,6 +27,8 @@
         // /questions/26864653
         public ActionResult Display(int id, string url, int page = 1)
         {
+            var viewModel = new QuestionDisplayViewModel();
+
             var question = this.posts
                 .All()
                 .Where(x => x.Id == id)
@@ -39,13 +39,34 @@
             {
                 return this.HttpNotFound("No such post");
             }
-            var viewModel = new QuestionDisplayViewModel
+
+            decimal totalPages = 0;
+            var allAnswersCount = 0;
+
+            if (question.Answers.Count() != 0)
             {
-                Question = question,
-                Answer = new AnswerInputModel()
-                {
-                    PostId = question.Id
-                }
+                allAnswersCount = question.Answers.Count();
+                totalPages = Math.Ceiling(allAnswersCount / (decimal)AnswersPerPage);
+                var itemsToSkip = (page - 1) * AnswersPerPage;
+                var answers = question
+                    .Answers
+                    .AsQueryable()
+                    .To<PostAnswerViewModel>()
+                    .ToList()
+                    .OrderByDescending(x => x.CreatedOn)
+                    .Skip(itemsToSkip)
+                    .Take(AnswersPerPage);
+
+
+                viewModel.TotalPages = (int)totalPages;
+                viewModel.CurrentPage = page;
+                viewModel.Answers = answers;
+            }
+
+            viewModel.Question = question;
+            viewModel.Answer = new AnswerInputModel()
+            {
+                PostId = question.Id
             };
 
             return this.View(viewModel);

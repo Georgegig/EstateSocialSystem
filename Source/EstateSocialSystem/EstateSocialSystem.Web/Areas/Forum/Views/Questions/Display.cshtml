@@ -16,7 +16,7 @@
     {
         <div class="col-md-12">
             <div class="row">
-                @foreach (var answer in Model.Question.Answers)
+                @foreach (var answer in Model.Answers)
                 {
                     <div class="col-md-12 table-bordered" style="margin-bottom:10px;">
                         <p>
@@ -25,9 +25,43 @@
                         <p>
                             @answer.Content
                         </p>
-                        <span class="glyphicon glyphicon-arrow-right"></span><span class="small">Answer by @answer.Author.UserName on @answer.CreatedOn</span>
+                        <span class="glyphicon glyphicon-arrow-right"></span><span class="small">Answer by @answer.Author on @answer.CreatedOn</span>
                     </div>
                 }
+                <div class="col-md-12 text-center">
+                    <nav>
+                        <ul class="pagination">
+                            @if (Model.CurrentPage > 1)
+                            {
+                                <li>
+                                    <a href="/questions/@Model.Question.Id?page=@(Model.CurrentPage - 1)" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            }
+                            @for (int i = 1; i <= Model.TotalPages; i++)
+                            {
+                                var className = string.Empty;
+
+                                if (Model.CurrentPage == i)
+                                {
+                                    className = "active";
+                                }
+
+                                <li class="@className"><a href="/questions/@Model.Question.Id?page=@i">@i</a></li>
+                            }
+                            @if (Model.CurrentPage < Model.TotalPages)
+                            {
+                                <li>
+                                    <a href="/questions/@Model.Question.Id?page=@(Model.CurrentPage + 1)" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+
+                </div>
             </div>
         </div>
     }

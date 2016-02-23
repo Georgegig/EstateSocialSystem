@@ -226,6 +226,7 @@
     <Compile Include="Areas\Forum\Controllers\VotesController.cs" />
     <Compile Include="Areas\Forum\InputModels\Question\AskInputModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\Answers\AnswerInputModel.cs" />
+    <Compile Include="Areas\Forum\ViewModels\Answers\PostAnswerViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\ForumIndex\IndexBlogPostTagViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\ForumIndex\IndexBlogPostViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\ForumIndex\IndexListBlogPostViewModel.cs" />
