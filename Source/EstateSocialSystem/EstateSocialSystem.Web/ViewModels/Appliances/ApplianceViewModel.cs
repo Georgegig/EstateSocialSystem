@@ -4,6 +4,7 @@
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
+    using System.Collections.Generic;
 
     public class ApplianceViewModel : IMapFrom<Appliance>, IHaveCustomMappings
     {
@@ -22,6 +23,8 @@
         public string Manufacturer { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public ICollection<ApplianceRating> Ratings { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

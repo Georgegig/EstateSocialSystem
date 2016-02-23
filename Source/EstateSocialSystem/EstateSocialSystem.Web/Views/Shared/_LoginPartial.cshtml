@@ -127,7 +127,7 @@ else
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="estateDropDown">
-                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Estate", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Estate", new { area = "" }, null)</li>
                     <li class="divider"></li>
                 </ul>
             </div>
@@ -140,7 +140,7 @@ else
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="applianceDropDown">
-                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Appliance", routeValues: null, htmlAttributes: new { id = "createLink" })</li>
+                    <li class="text-center">@Html.ActionLink("View All", "ViewAll", "Appliance", new { area = "" }, null)</li>
                     <li class="divider"></li>
                 </ul>
             </div>

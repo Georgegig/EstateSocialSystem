@@ -4,6 +4,7 @@
 
     public class ApplianceListViewModel
     {
+        public string SortBy { get; set; }
 
         public int CurrentPage { get; set; }
 

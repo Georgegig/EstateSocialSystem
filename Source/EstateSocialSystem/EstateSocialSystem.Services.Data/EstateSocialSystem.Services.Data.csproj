@@ -47,12 +47,14 @@
     <Compile Include="ApplianceService.cs" />
     <Compile Include="Contracts\IApplianceCommentService.cs" />
     <Compile Include="Contracts\IApplianceRatingService.cs" />
+    <Compile Include="Contracts\IPostService.cs" />
     <Compile Include="EstateCommentService.cs" />
     <Compile Include="EstateService.cs" />
     <Compile Include="Contracts\IApplianceService.cs" />
     <Compile Include="Contracts\IEstateCommentService.cs" />
     <Compile Include="Contracts\IEstateService.cs" />
     <Compile Include="Contracts\IEstateRatingService.cs" />
+    <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EstateRatingService.cs" />
   </ItemGroup>

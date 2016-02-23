@@ -1,52 +1,106 @@
-﻿@model IEnumerable<EstateSocialSystem.Web.Areas.Forum.ViewModels.IndexBlogPostViewModel>
+﻿@model EstateSocialSystem.Web.Areas.Forum.ViewModels.IndexListBlogPostViewModel
 @{
     ViewBag.Title = "Forum Index Page";
 }
 <h1>@ViewBag.Title</h1>
 <br/>    
-<div class="container">
-    @foreach (var post in Model)
-    {
-        <div class="row">
-            <div class="col-md-1">
-                <div class="well text-center">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="row" data-id="@post.Id" data-action="up"><span class="glyphicon glyphicon glyphicon-thumbs-up"></span></div>
-                    }
-                    <div class="row" data-id="@post.Id" data-action="votesCount">@post.VotesCount</div>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="row" data-id="@post.Id" data-action="down"><span class="glyphicon glyphicon-thumbs-down"></span></div>
-                    }
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="well text-center">
-                    <div class="row">0</div>
-                    <div class="row">answers</div>
-                </div>
-            </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <h4>
-                        <a href="@post.Url">@post.Title</a>
-                    </h4>
-                </div>
-                <div class="row">
-                    <p>asked 35 minutes ago in Kids Academy - програмиране за деца by a.dimitrov04 (40 points)</p>
-                </div>
-                <div class="row">
-                    @foreach (var tag in post.Tags)
-                    {
-                        <span class="label label-default">@tag.Name</span>
-                    }
-                </div>
-            </div>
+<div class="container row">
+    <div class="col-md-12">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="sortByDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                    style="margin-top:8px;">
+                Sort by
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="sortByDropDown">
+                <li class="text-center"><a href="/Forum/ForumIndex/Index?sortBy=date">Date</a></li>
+                <li class="text-center"><a href="/Forum/ForumIndex/Index?sortBy=vote">Votes</a></li>
+            </ul>
         </div>
-        <hr />
-    }
+        <br />
+    </div>
+    <div class="col-md-12">
+        @foreach (var post in Model.Posts)
+        {
+            <div class="row">
+                <div class="col-md-1">
+                    <div class="well text-center">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="row" data-id="@post.Id" data-action="up"><span class="glyphicon glyphicon glyphicon-thumbs-up"></span></div>
+                        }
+                        <div class="row" data-id="@post.Id" data-action="votesCount">
+                            @post.VotesCount
+                            <p class="small">Votes</p>
+                        </div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="row" data-id="@post.Id" data-action="down"><span class="glyphicon glyphicon-thumbs-down"></span></div>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="well text-center">
+                        <div class="row">0</div>
+                        <div class="row">answers</div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <h4>
+                            <a href="@post.Url">@post.Title</a>
+                            <p class="small">@post.CreatedOn</p>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <p>asked 35 minutes ago in Kids Academy - програмиране за деца by a.dimitrov04 (40 points)</p>
+                    </div>
+                    <div class="row">
+                        @foreach (var tag in post.Tags)
+                        {
+                            <span class="label label-default">@tag.Name</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <div class="col-md-12 text-center">
+        <nav>
+            <ul class="pagination">
+                @if (Model.CurrentPage > 1)
+            {
+                    <li>
+                        <a href="/Forum/ForumIndex/Index/@(Model.CurrentPage - 1)?sortBy=@Model.SortBy" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                }
+                @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                var className = string.Empty;
+
+                if (Model.CurrentPage == i)
+                {
+                    className = "active";
+                }
+
+                <li class="@className"><a href="/Forum/ForumIndex/Index/@i?sortBy=@Model.SortBy">@i</a></li>
+                }
+                @if (Model.CurrentPage < Model.TotalPages)
+            {
+                    <li>
+                        <a href="/Forum/ForumIndex/Index/@(Model.CurrentPage + 1)?sortBy=@Model.SortBy" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
 </div>
+
 <style>
     div[data-action="up"], div[data-action="down"] {
         cursor: pointer;
@@ -64,7 +118,6 @@
         });
 
         function voteClick(id, voteType) {
-
 
             $.post("/Votes/Vote", { postId: id, voteType: voteType },
                 function (data) {

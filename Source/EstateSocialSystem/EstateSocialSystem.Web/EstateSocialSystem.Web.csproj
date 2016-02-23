@@ -228,6 +228,7 @@
     <Compile Include="Areas\Forum\ViewModels\Answers\AnswerInputModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\ForumIndex\IndexBlogPostTagViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\ForumIndex\IndexBlogPostViewModel.cs" />
+    <Compile Include="Areas\Forum\ViewModels\ForumIndex\IndexListBlogPostViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\PageableAnswerList\AnswerListViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\PageableAnswerList\AnswerViewModel.cs" />
     <Compile Include="Areas\Forum\ViewModels\Questions\QuestionDisplayViewModel.cs" />

@@ -4,6 +4,7 @@
     using Infrastructure.Mapping;
     using System;
     using AutoMapper;
+    using System.Collections.Generic;
 
     public class EstateViewModel : IMapFrom<Estate>, IHaveCustomMappings
     {
@@ -18,6 +19,8 @@
         public string Author { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public ICollection<EstateRating> Ratings { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

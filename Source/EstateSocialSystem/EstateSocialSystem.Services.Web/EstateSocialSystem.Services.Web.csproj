@@ -47,6 +47,16 @@
     <Compile Include="IIdentifierProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EstateSocialSystem.Data.Common\EstateSocialSystem.Data.Common.csproj">
+      <Project>{772c7a3b-7df4-4b1b-8216-16969589bec4}</Project>
+      <Name>EstateSocialSystem.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EstateSocialSystem.Data.Models\EstateSocialSystem.Data.Models.csproj">
+      <Project>{e47e4213-6aaf-4363-abed-9ca04dab16a3}</Project>
+      <Name>EstateSocialSystem.Data.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

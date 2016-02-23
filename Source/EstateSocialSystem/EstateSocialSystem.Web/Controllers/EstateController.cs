@@ -8,6 +8,8 @@
     using Microsoft.AspNet.Identity;
     using Services.Data;
     using System.Linq;
+    using Services.Web;
+    using System.Collections.Generic;
 
     public class EstateController : Controller
     {
@@ -82,16 +84,24 @@
         
         // GET: Estate View All
         [AllowAnonymous]
-        public ActionResult ViewAll(int id = 1)
+        public ActionResult ViewAll(string sortBy = "date", int id = 1)
         {
             var page = id;
             var allItemsCount = this.estates.GetAll().Count();
             var totalPages = Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
             var itemsToSkip = (page - 1) * ItemsPerPage;
-            var estates = this.estates.GetAll().OrderBy(x => x.CreatedOn).ThenBy(x => x.Id).Skip(itemsToSkip).Take(ItemsPerPage).To<EstateViewModel>().ToList();
 
+            var estates = this.estates
+                .GetAll()
+                .To<EstateViewModel>()
+                .ToList()
+                .OrderByDescending(x => x, new EstateSorterService(sortBy))
+                .Skip(itemsToSkip)
+                .Take(ItemsPerPage);
+            
             var viewModel = new EstateListViewModel
             {
+                SortBy = sortBy,
                 CurrentPage = page,
                 TotalPages = (int)totalPages,
                 Estates = estates
@@ -193,4 +203,61 @@
             return this.RedirectToAction("Unauthorized", "Common");            
         }
     }
+
+    #region Helpers
+    public class EstateSorterService : IComparer<EstateViewModel>
+    {
+        private string sortBy;
+
+        public EstateSorterService(string sortBy)
+        {
+            this.sortBy = sortBy;
+        }
+
+        public int Compare(EstateViewModel x, EstateViewModel y)
+        {
+            if (this.sortBy == "date")
+            {
+                return DateTime.Compare(x.CreatedOn, y.CreatedOn);
+            }
+            else if (this.sortBy == "rating")
+            {
+                if (x.Ratings.Count == 0 && y.Ratings.Count != 0)
+                {
+                    return -1;
+                }
+                else if (x.Ratings.Count != 0 && y.Ratings.Count == 0)
+                {
+                    return 1;
+                }
+                else if (!(x.Ratings.Count == 0) && !(y.Ratings.Count == 0))
+                {
+                    var xAverageRating = x.Ratings.Sum(r => r.Value) / x.Ratings.Count;
+                    var yAverageRating = y.Ratings.Sum(r => r.Value) / y.Ratings.Count;
+
+                    if (xAverageRating < yAverageRating)
+                    {
+                        return -1;
+                    }
+                    else if (xAverageRating > yAverageRating)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+    #endregion
 }

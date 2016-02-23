@@ -3,6 +3,7 @@
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -15,6 +16,10 @@
         public int VotesCount { get; set; }
 
         public IEnumerable<IndexBlogPostTagViewModel> Tags { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public ICollection<PostVote> Votes { get; set; }
 
         public string Url
         {
