@@ -454,6 +454,11 @@
     <Content Include="Views\Shared\EditorTemplates\AdministerEstateViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdministerApplianceViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AdministerPostViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AskInputModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AnswerInputModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ApplianceCreateViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UpdateUserInformation.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UpdateAccountViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\AdministerPosts\" />

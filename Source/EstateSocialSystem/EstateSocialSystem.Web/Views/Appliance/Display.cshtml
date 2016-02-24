@@ -89,6 +89,20 @@
                         <textarea id="content" name="content"></textarea>
                         <input type="submit" value="Comment" />
                     </form>
+                </div>                
+            </div>
+        </div>
+    }
+    else if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-md-4">
+            <div class="row">                
+                <div class="col-md-12 table-bordered" style="margin-bottom:20px;">
+                    <form action="/Comment/CreateApplianceComment/@ViewBag.ApplianceViewModel.Id" method="post">
+                        <label for="content">Content</label>
+                        <textarea id="content" name="content"></textarea>
+                        <input type="submit" value="Comment" />
+                    </form>
                 </div>
                 <div class="col-md-12 table-bordered" style="margin-bottom:20px;">
                     <select form="formRate" name="rate">

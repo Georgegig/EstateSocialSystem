@@ -1,72 +1,11 @@
-﻿@model EstateSocialSystem.Data.Models.User
-
-@{
+﻿@{
     ViewBag.Title = "UserProfile";
 }
 
 <h2>User Profile</h2>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
+@Html.Partial("~/Views/Shared/DisplayTemplates/UpdateUserInformation.cshtml");
 
-        <dd>
-            <img src="@Html.DisplayFor(model => model.Avatar)" alt="Avatar" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-    </dl>
-</div>
 <p>
     <div class="btn btn-default">
         @Html.ActionLink("Update Account Information", "Update", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
