@@ -19,6 +19,8 @@
         [Display(Name = "Size")]
         public double Size { get; set; }
 
+        public string EstateModel { get; set; }
+
         public string AuthorId { get; set; }
 
         public IEnumerable<EstateComment> Comments { get; set; }

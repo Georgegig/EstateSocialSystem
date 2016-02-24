@@ -27,6 +27,9 @@ namespace EstateSocialSystem.Web
                       "~/Scripts/KendoUi/kendo.all.min.js",
                       "~/Scripts/KendoUi/kendo.aspnetmvc.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/paperjs").Include(
+                      "~/Scripts/PaperJs/paper-full.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.cerulean.css",
                       "~/Content/site.css"));

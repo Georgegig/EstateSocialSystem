@@ -11,6 +11,7 @@
     using Services.Web;
     using System.Collections.Generic;
     using ViewModels;
+    using System.Web;
 
     public class EstateController : Controller
     {
@@ -67,6 +68,10 @@
             var estateRatingSum = 0;
             var count = 0;
             int estateAverageRating = 0;
+
+            var test = estateViewModel.EstateModel;
+            var test2 = HttpUtility.HtmlDecode(estateViewModel.EstateModel);
+
 
             if (estateViewModel.Comments.Count() != 0)
             {
@@ -224,6 +229,25 @@
             }
 
             return this.RedirectToAction("Unauthorized", "Common");            
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult UpdateModel(string json, int id)
+        {
+            var estateToUpdate = this.estates.GetById(id);
+            var currentUserId = User.Identity.GetUserId();
+            
+            if (estateToUpdate.AuthorId == currentUserId)
+            {
+                estateToUpdate.EstateModel = json;
+
+                this.estates.Update(estateToUpdate);
+
+                return this.RedirectToAction("Details", "Estate", new { id = id });
+            }
+
+            return this.RedirectToAction("Unauthorized", "Common");
         }
     }
 

@@ -30,6 +30,8 @@
         [Required]
         public double Size { get; set; }
 
+        public string EstateModel { get; set; }
+
         public virtual ICollection<Appliance> Appliances { get { return this.appliances; } set { this.appliances = value; } }
 
         public virtual ICollection<EstateRating> Ratings { get { return this.ratings; } set { this.ratings = value; } }

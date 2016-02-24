@@ -7,6 +7,22 @@
     </div>
 </div>
 <div class="row">
+    @if (!string.IsNullOrEmpty(ViewBag.EstateViewModel.EstateModel) || (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId))
+    {
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <canvas id="canvas" style="width:100%;height:100%;"></canvas>
+                </div>
+                @if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
+                {
+                    <div class="col-md-12">
+                        <input type="button" id="updateModelButton" value="Update Model" />
+                    </div>
+                }
+            </div>
+        </div>
+    }
     <div class="col-md-8">
         <div class="row">
             <div class="col-md-12">
@@ -99,7 +115,7 @@
         </div>
     </div>
     @if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
-    {
+    {   
         <div class="col-md-4">
             <div class="row">
                 <div class="col-md-12" style="margin-bottom:20px;">
@@ -162,11 +178,79 @@
                         <input type="submit" value="Comment" />
                     </form>
                 </div>
+                <div class="col-md-12 table-bordered" style="margin-bottom:20px;">
+                    <select form="formRate" name="rate">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <br />
+                    <form action="/Rating/AddEstateRating/@ViewBag.EstateViewModel.Id" method="post" id="formRate">
+                        <input type="submit" value="Rate" />
+                    </form>
+                </div>
             </div>
         </div>
     }
 </div>
+<script type="text/paperscript" canvas="canvas">
+    @if (ViewBag.EstateViewModel.EstateModel != null)
+    {
+        @:var receivedJSON = decodeURI('@ViewBag.EstateViewModel.EstateModel');
+        @:var projectJSON = receivedJSON.substring(1, receivedJSON.length - 1);
+        @:paper.project.activeLayer.importJSON(projectJSON);
 
+    }
+    @if (User.Identity.GetUserId() == ViewBag.EstateViewModel.AuthorId)
+    {
+        @:var path;
+        @:var textItem = new PointText({
+        @:    content: 'Click and drag to draw a line.',
+        @:    point: new Point(20, 30),
+        @:    fillColor: 'black',
+        @:});
+        @:function onMouseDown(event) {
+        @:    if (path) {
+        @:        path.selected = false;
+        @:    }
+        @:    path = new Path({
+        @:        segments: [event.point],
+        @:        strokeColor: 'black',
+        @:        fullySelected: true
+        @:    });
+        @:}
+        @:function onMouseDrag(event) {
+        @:    path.add(event.point);
+        @:    //textItem.content = 'Segment count: ' + path.segments.length;
+        @:}
+        @:function onMouseUp(event) {
+        @:    var segmentCount = path.segments.length;
+        @:    path.simplify(10);
+        @:    path.fullySelected = true;
+        @:    var newSegmentCount = path.segments.length;
+        @:    var difference = segmentCount - newSegmentCount;
+        @:    var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
+        @:    //textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
+        @:}
+        @:$('#updateModelButton').on('click', function(){
+        @:        var jsonData = project.exportJSON();
+        @:        $.ajax({
+        @:            url: "/Estate/UpdateModel/@ViewBag.EstateViewModel.Id",
+        @:            type: "POST",
+        @:            data: {
+        @:                json: encodeURI(jsonData)
+        @:            },
+        @:            success: function(data){
+        @:                alert('Model saved!');
+        @:            },
+        @:            failure: function(errMsg) {}
+        @:        });
+        @:    })
+    }
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/paperjs")
 }
