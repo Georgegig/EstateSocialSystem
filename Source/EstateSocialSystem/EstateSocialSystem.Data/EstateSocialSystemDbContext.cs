@@ -94,7 +94,7 @@
 
             //// Configure OwnerId as FK for Manufacturer
             modelBuilder.Entity<User>()
-                        .HasOptional(u => u.Manufacturer) //// Mark Manufacturer is optional for Student
+                        .HasOptional(u => u.Manufacturer) //// Mark Manufacturer is optional for User
                         .WithRequired(m => m.Owner) //// Create inverse relationship
                         .WillCascadeOnDelete(true);
 
