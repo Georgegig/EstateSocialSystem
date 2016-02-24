@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateSocialSystem.Services
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateSocialSystem.Services.Web", "EstateSocialSystem.Services.Web\EstateSocialSystem.Services.Web.csproj", "{012A71E0-04F4-4B82-AB06-DEA0D3541DA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateSocialSystem.Web.Routes.Tests", "EstateSocialSystem.Web.Routes.Tests\EstateSocialSystem.Web.Routes.Tests.csproj", "{39B9C731-37F1-4DD0-83EE-9CE4A0D17AF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{012A71E0-04F4-4B82-AB06-DEA0D3541DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{012A71E0-04F4-4B82-AB06-DEA0D3541DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{012A71E0-04F4-4B82-AB06-DEA0D3541DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B9C731-37F1-4DD0-83EE-9CE4A0D17AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B9C731-37F1-4DD0-83EE-9CE4A0D17AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B9C731-37F1-4DD0-83EE-9CE4A0D17AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B9C731-37F1-4DD0-83EE-9CE4A0D17AF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,5 +85,6 @@ Global
 		{8B380C85-7CED-4C57-90D3-4437911D95BD} = {64649220-E4F9-4C2B-84F8-59B695BD8133}
 		{2C067FFD-A242-46FE-BBAF-C55EC926970A} = {866D5708-21E0-4D33-B947-A2F19ECFE23B}
 		{012A71E0-04F4-4B82-AB06-DEA0D3541DA2} = {866D5708-21E0-4D33-B947-A2F19ECFE23B}
+		{39B9C731-37F1-4DD0-83EE-9CE4A0D17AF0} = {266C2178-53C9-4225-9782-0A30024A9E98}
 	EndGlobalSection
 EndGlobal

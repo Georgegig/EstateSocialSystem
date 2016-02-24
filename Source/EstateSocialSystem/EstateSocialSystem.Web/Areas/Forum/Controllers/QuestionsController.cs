@@ -25,7 +25,7 @@
         }
 
         // /questions/26864653
-        public ActionResult Display(int id, string url, int page = 1)
+        public ActionResult Display(int id, int page = 1)
         {
             var viewModel = new QuestionDisplayViewModel();
 
