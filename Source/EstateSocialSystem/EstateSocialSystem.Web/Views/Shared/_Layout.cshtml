@@ -30,6 +30,9 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("sidebar", required: false)
+        @RenderSection("suggestions", required: false)
+        @RenderSection("adds", required: false)
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

@@ -2,7 +2,6 @@
 {
     using Models;
     using Infrastructure.Mapping;
-    using Microsoft.AspNet.Identity;
     using System.Linq;
     using System.Web.Mvc;
     using Services.Data;
@@ -21,23 +20,37 @@
 
         public ActionResult Index()
         {
-            var estates = this.estates
-                .GetAll()
-                .OrderByDescending(e => e.Ratings.Count() == 0 ? 0 : e.Ratings.Sum(r => r.Value) / e.Ratings.Count())
-                .Take(15)
-                .To<HomeIndexEstateViewModel>()
-                .ToList();
+            var estates = new List<HomeIndexEstateViewModel>();
+            var appliances = new List<HomeIndexApplianceViewModel>();
 
-            ViewBag.Estates = estates;
+            if (this.HttpContext.Cache["Home estates"] != null && this.HttpContext.Cache["Home appliances"] != null)
+            {
+                ViewBag.Estates = this.HttpContext.Cache["Home estates"];
+                ViewBag.Appliances = this.HttpContext.Cache["Home appliances"];
+            }
+            else
+            {
+                estates = this.estates
+                    .GetAll()
+                    .OrderByDescending(e => e.Ratings.Count() == 0 ? 0 : e.Ratings.Sum(r => r.Value) / e.Ratings.Count())
+                    .Take(15)
+                    .To<HomeIndexEstateViewModel>()
+                    .ToList();
 
-            var appliances = this.appliances
-                .GetAll()
-                .OrderByDescending(a => a.Ratings.Count() == 0 ? 0 : a.Ratings.Sum(r => r.Value) / a.Ratings.Count())
-                .Take(15)
-                .To<HomeIndexApplianceViewModel>()
-                .ToList();
-            ViewBag.Appliances = appliances;
-            
+                appliances = this.appliances
+                    .GetAll()
+                    .OrderByDescending(a => a.Ratings.Count() == 0 ? 0 : a.Ratings.Sum(r => r.Value) / a.Ratings.Count())
+                    .Take(15)
+                    .To<HomeIndexApplianceViewModel>()
+                    .ToList();
+
+                ViewBag.Estates = estates;
+                ViewBag.Appliances = appliances;
+
+                this.HttpContext.Cache["Home estates"] = estates;
+                this.HttpContext.Cache["Home appliances"] = appliances;
+            }
+                        
             return this.View(ViewBag);
         }
 

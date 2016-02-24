@@ -94,4 +94,15 @@
         </div>
     </div>
 </div>
-
+ @section Sidebar {
+    @if (User.IsInRole("Regular"))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn btn-default">
+                    @Html.ActionLink("View Personal Estates", "Personal", "Estate", new { area = "" }, null)
+                </div>
+            </div>
+        </div>
+    }
+}
