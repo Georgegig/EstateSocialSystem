@@ -1,6 +1,5 @@
 EstateSocialSystem
 ==================
-<b>TODO</b>
+<b>Documentation</b>
 	
-	Separate FORUM SYSTEM; SOCIAL SYSTEM AND MARKET SYSTEM	
-	Organize them as Areas!!!!!!!!
+	
