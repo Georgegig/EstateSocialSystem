@@ -460,6 +460,8 @@
     <Content Include="Views\Shared\DisplayTemplates\UpdateUserInformation.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UpdateAccountViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EstateCreateViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UpdateEstateViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UpdateApplianceViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\AdministerPosts\" />
