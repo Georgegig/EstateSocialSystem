@@ -459,6 +459,7 @@
     <Content Include="Views\Shared\EditorTemplates\ApplianceCreateViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\UpdateUserInformation.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UpdateAccountViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EstateCreateViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\AdministerPosts\" />
